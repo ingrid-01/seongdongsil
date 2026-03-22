@@ -60,10 +60,10 @@ section {
   grid-column: span 2;
 }
 
-#what-are-we .item:first-child {
+#what-are-we .item:nth-child(3) {
   grid-column: span 2;
 }
 
-#why-are-we .item:first-child {
-  grid-row: span 2;
+#why-are-we .item:nth-child(3) {
+  grid-column: span 2;
 }
