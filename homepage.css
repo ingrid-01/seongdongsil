@@ -94,7 +94,7 @@ main {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     place-items: center;
-    padding: 20px;
+    padding: 10px;
     gap: 10px;
   }
 
