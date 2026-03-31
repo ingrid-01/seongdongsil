@@ -62,7 +62,7 @@ const displayEvents = () => {
       <span class="tag region">${event.region}</span>
     `;
 
-    // Event detaails
+    // Event details
     const details = document.createElement("div");
     details.classList.add("event-details");
     details.innerHTML = `
@@ -71,6 +71,26 @@ const displayEvents = () => {
       <p>⏰ ${event.startTime} ~ ${event.endTime}</p>
       <p>📍 ${event.location}</p>
     `;
+
+    // join btn
+    const joinBtn = document.createElement("button");
+    joinBtn.classList.add("join-btn");
+
+    // Check if user is already an attendee
+    const isAttending = event.attendees.includes(nickname);
+    joinBtn.textContent = isAttending ? "참여 취소" : "참여하기";
+    joinBtn.classList.add(isAttending ? "attending" : "not-attending");
+
+    joinBtn.addEventListener("click", () => {  
+      if (isAttending) {
+        // Remove from attendees
+        event.attendees = event.attendees.filter(a => a !== nickname);
+      } else {
+        // Add to attendees
+        event.attendees.push(nickname);
+      }
+      displayEvents(); // Refresh the display
+    });  
 
     card.appendChild(tags);
     card.appendChild(details);
