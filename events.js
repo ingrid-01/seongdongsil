@@ -109,6 +109,7 @@ const displayEvents = () => {
         // Add to attendees
         event.attendees.push(nickname);
       }
+      saveEvents(); // Save changes
       displayEvents(); // Refresh the display
     });
 
