@@ -240,33 +240,61 @@ eventForm.addEventListener("submit", (e) => {
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const dayOfWeek = days[dateObj.getDay()];
 
-  // Build new event object
-  const newEvent = {
-    id: `event_${Date.now()}`, // unique id using timestamp
-    category: document.getElementById("event-category").value,
-    subCategory: document.getElementById("event-sub").value || null,
-    region: document.getElementById("event-region").value,
-    title: document.getElementById("event-title").value,
-    date: document.getElementById("event-date").value,
-    day: dayOfWeek,
-    startTime: document.getElementById("event-start").value,
-    endTime: document.getElementById("event-end").value,
-    location: document.getElementById("event-location").value,
-    createdBy: nickname,
-    attendees: [nickname], // creator automatically joins!
-    comments: [],
-  };
+  const editId = eventForm.dataset.editId;
 
-  // Add to events array
-  events.push(newEvent);
-  saveEvents(); // save to local Storage
-  displayEvents(); // refresh display
+  if (editId) {
+    // Editing existing event
+    const index = events.findIndex((e) => e.id === editId);
+    if (index !== -1) {
+      // Update only the editable fields - keep attendees and comments!
+      events[index].category = document.getElementById("event-category").value;
+      events[index].subCategory =
+        document.getElementById("event-sub").value || null;
+      events[index].region = document.getElementById("event-region").value;
+      events[index].title = document.getElementById("event-title").value;
+      events[index].date = document.getElementById("event-date").value;
+      events[index].day = dayOfWeek;
+      events[index].startTime = document.getElementById("event-start").value;
+      events[index].endTime = document.getElementById("event-end").value;
+      events[index].location = document.getElementById("event-location").value;
+    }
+    delete eventForm.dataset.editId; // clear edit mode
+  } else {
+    // creating new event
+    const newEvent = {
+      id: `event_${Date.now()}`,
+      category: document.getElementById("event-category").value,
+      subCategory: document.getElementById("event-sub").value || null,
+      region: document.getElementById("event-region").value,
+      title: document.getElementById("event-title").value,
+      date: document.getElementById("event-date").value,
+      day: dayOfWeek,
+      startTime: document.getElementById("event-start").value,
+      endTime: document.getElementById("event-end").value,
+      location: document.getElementById("event-location").value,
+      createdBy: nickname,
+      attendees: [nickname],
+      comments: [],
+    };
+    events.push(newEvent);
+  }
 
-  // Close modal & reset form
+  saveEvents();
+  displayEvents();
   modalOverlay.classList.add("hidden");
   eventForm.reset();
   subCategoryGroup.classList.add("hidden");
 });
+
+// Add to events array
+events.push(newEvent);
+saveEvents(); // save to local Storage
+displayEvents(); // refresh display
+
+// Close modal & reset form
+modalOverlay.classList.add("hidden");
+eventForm.reset();
+subCategoryGroup.classList.add("hidden");
 
 // 7. Initialise
 loadEvents();
