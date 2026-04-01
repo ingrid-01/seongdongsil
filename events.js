@@ -175,6 +175,83 @@ const displayEvents = () => {
     const attendeesSection = document.createElement("div");
     attendeesSection.classList.add("attendees-section");
 
+    // Comments section
+    const commentsSection = document.createElement("div");
+    commentsSection.classList.add("comments-section");
+
+    // Comments toggle button
+    const commentsToggle = document.createElement("button");
+    commentsToggle.classList.add("toggle-btn");
+    commentsToggle.textContent = `댓글 ${event.comments.length}개 ⏷`;
+
+    // Comments list - hidden by default
+    const commentsList = document.createElement("div");
+    commentsList.classList.add("comments-list", "hidden");
+
+    // Display exisiting comments
+    event.comments.forEach((comment, index) => {
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment");
+
+      const commentText = document.createElement("p");
+      commentText.textContent = `${comment.nickname}: ${comment.text}`;
+
+      commentDiv.appendChild(commentText);
+
+      // Delete button - only for own comments
+      if (comment.nickname === nickname) {
+        const deleteComment = document.createElement("button");
+        deleteComment.classList.add("delete-comment-btn");
+        deleteComment.textContent = "삭제";
+
+        deleteComment.addEventListener("click", () => {
+          event.comments.splice(index, 1);
+          saveEvents();
+          displayEvents();
+        });
+
+        commentDiv.appendChild(deleteComment);
+      }
+
+      commentsList.appendChild(commentDiv);
+    });
+
+    // Comment input area
+    const commentInput = document.createElement("input");
+    commentInput.type = "text";
+    commentInput.placeholder = "댓글을 입력해주세요";
+    commentInput.classList.add("comment-input");
+
+    const commentSubmit = document.createElement("button");
+    commentSubmit.classList.add("comment-submit-btn");
+    commentSubmit.textContent = "게시";
+
+    commentSubmit.addEventListener("click", () => {
+      const text = commentInput.value.trim();
+      if (!text) return; // ignore empty comments
+
+      event.comments.push({
+        nickname: nickname,
+        text: text,
+        createdAt: new Date().toISOString(),
+      });
+
+      saveEvents();
+      displayEvents();
+    });
+
+    // Toggle visibility
+    commentsToggle.addEventListener("click", () => {
+      commentsList.classList.toggle("hidden");
+      const isOpen = !commentsList.classList.contains("hidden");
+      commentsToggle.textContent = `댓글 ${event.comments.length}개 ${isOpen ? "⏶" : "⏷"}`;
+    });
+
+    commentsSection.appendChild(commentsToggle);
+    commentsSection.appendChild(commentsList);
+    commentsSection.appendChild(commentInput);
+    commentsSection.appendChild(commentSubmit);
+
     // attendees toggle button
     const attendeesToggle = document.createElement("button");
     attendeesToggle.classList.add("toggle-btn");
@@ -203,6 +280,7 @@ const displayEvents = () => {
     card.appendChild(tags);
     card.appendChild(details);
     card.appendChild(attendeesSection);
+    card.appendChild(commentsSection);
     card.appendChild(joinBtn);
     eventsContainer.appendChild(card);
   });
