@@ -286,16 +286,6 @@ eventForm.addEventListener("submit", (e) => {
   subCategoryGroup.classList.add("hidden");
 });
 
-// Add to events array
-events.push(newEvent);
-saveEvents(); // save to local Storage
-displayEvents(); // refresh display
-
-// Close modal & reset form
-modalOverlay.classList.add("hidden");
-eventForm.reset();
-subCategoryGroup.classList.add("hidden");
-
 // 7. Initialise
 loadEvents();
 displayEvents();
