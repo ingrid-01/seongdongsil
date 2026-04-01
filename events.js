@@ -174,7 +174,7 @@ cancelBtn.addEventListener("click", () => {
 // Show/hide sub-category based on category selection
 categorySelect.addEventListener("change", () => {
   if (categorySelect.value === "스터디벙") {
-    subCategoryGroup.classList.remove("hiddne");
+    subCategoryGroup.classList.remove("hidden");
   } else {
     subCategoryGroup.classList.add("hidden");
   }
