@@ -180,6 +180,43 @@ categorySelect.addEventListener("change", () => {
   }
 });
 
+// Handle form submission
+eventForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // stops page from refreshing!
+
+  // Get day of week from date
+  const dateObj = new Date(document.getElementById("event-date").value);
+  const days = ["일", "월", "화", "수", "목", "금", "토"];
+  const dayOfWeek = days[dateObj.getDay()];
+
+  // Build new event object
+  const newEvent = {
+    id: `event_${Date.now()}`, // unique id using timestamp
+    category: document.getElementById("event-category").value,
+    subCategory: document.getElementById("event-sub").value || null,
+    region: document.getElementById("event-region").value,
+    title: document.getElementById("event-title").value,
+    date: document.getElementById("event-date").value,
+    day: dayOfWeek,
+    startTime: document.getElementById("event-start").value,
+    endTime: document.getElementById("event-end").value,
+    location: document.getElementById("event-location").value,
+    createdBy: nickname,
+    attendees: [nickname], // creator automatically joins!
+    comments: [],
+  };
+
+  // Add to events array
+  events.push(newEvent);
+  saveEvents(); // save to local Storage
+  displayEvents(); // refresh display
+
+  // Close modal & reset form
+  modalOverlay.classList.add("hidden");
+  eventForm.reset();
+  subCategoryGroup.classList.add("hidden");
+});
+
 // 7. Initialise
 loadEvents();
 displayEvents();
