@@ -1,3 +1,4 @@
+// 1. Nickname System
 let nickname = localStorage.getItem("nickname");
 
 if (!nickname || nickname.trim() === "") {
@@ -12,6 +13,7 @@ if (!nickname || nickname.trim() === "") {
 
 console.log(`현재 사용자: ${nickname}`);
 
+// 2. Events array - hardcoded starting data
 const events = [
   {
     id: "event_001",
@@ -45,8 +47,26 @@ const events = [
   },
 ];
 
+// 3. Get DOM container
 const eventsContainer = document.getElementById("events");
 
+// 4. Save and load functions  for localStorage
+// save events to localStorage whenever there's a change
+const saveEvents = () => {
+  localStorage.setItem("events", JSON.stringify(events));
+};
+
+// load events from localStorage
+const loadEvents = () => {
+  const saved = localStorage.getItem("events");
+  if (saved) {
+    const loaded = JSON.parse(saved);
+    events.length = 0; // clear current array
+    loaded.forEach((e) => events.push(e)); // refill with saved data
+  }
+};
+
+// 5. displayEvents function
 const displayEvents = () => {
   eventsContainer.innerHTML = "";
 
@@ -97,9 +117,9 @@ const displayEvents = () => {
     attendeesSection.classList.add("attendees-section");
 
     // attendees toggle button
-    const attendessToggle = document.createElement("button");
+    const attendeesToggle = document.createElement("button");
     attendeesToggle.classList.add("toggle-btn");
-    attnedeesToggle.textContent = `참여자 ${event.attendees.length}명 ⏷`;
+    attendeesToggle.textContent = `참여자 ${event.attendees.length}명 ⏷`;
 
     // attendees list - hidden by default
     const attendeesList = document.createElement("ul");
@@ -120,13 +140,15 @@ const displayEvents = () => {
 
     attendeesSection.appendChild(attendeesToggle);
     attendeesSection.appendChild(attendeesList);
-    card.appendChild(attendeesSection);
 
     card.appendChild(tags);
     card.appendChild(details);
+    card.appendChild(attendeesSection);
     card.appendChild(joinBtn);
     eventsContainer.appendChild(card);
   });
 };
 
+// 6. Run on page load
+loadEvents();
 displayEvents();
