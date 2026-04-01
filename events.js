@@ -103,6 +103,27 @@ const displayEvents = () => {
     const joinBtn = document.createElement("button");
     joinBtn.classList.add("join-btn");
 
+    // delete button - only show if current user created the event
+    if (event.createdBy === nickname) {
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete-btn");
+      deleteBtn.textContent = "삭제";
+      
+      deleteBtn.addEventListener("click", () => {
+        const confirm = window.confirm(`"${event.title}" 을 삭제할까요?`);
+        if (confirm) {
+          const index = events.indexOf(event);
+          events.splice(index, 1);
+          saveEvents();
+          displayEvents();
+        }
+      });
+
+      card.appendChild(deleteBtn);
+    }
+
+    
+
     // Check if user is already an attendee
     const isAttending = event.attendees.includes(nickname);
     joinBtn.textContent = isAttending ? "참여 취소" : "참여하기";
