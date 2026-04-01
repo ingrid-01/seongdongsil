@@ -108,7 +108,7 @@ const displayEvents = () => {
       const deleteBtn = document.createElement("button");
       deleteBtn.classList.add("delete-btn");
       deleteBtn.textContent = "삭제";
-      
+
       deleteBtn.addEventListener("click", () => {
         const confirm = window.confirm(`"${event.title}" 을 삭제할까요?`);
         if (confirm) {
@@ -122,7 +122,37 @@ const displayEvents = () => {
       card.appendChild(deleteBtn);
     }
 
-    
+    // Edit button - only show if current user created the event
+    if (event.createdBy === nickname) {
+      const editBtn = document.createElement("button");
+      editBtn.classList.add("edit-btn");
+      editBtn.textContent = "수정";
+
+      editBtn.addEventListener("click", () => {
+        //Pre-fill form w exisiting event data
+        document.getElementById("event-category").value = event.category;
+        document.getElementById("event-region").value = event.region;
+        document.getElementById("event-title").value = event.title;
+        document.getElementById("event-date").value = event.date;
+        document.getElementById("event-start").value = event.startTime;
+        document.getElementById("event-end").value = event.endTime;
+        document.getElementById("event-location").value = event.location;
+
+        // Handle sub-category
+        if (event.subCategory) {
+          subCategoryGroup.classList.remove("hidden");
+          document.getElementById("event-sub").value = event.subCategory;
+        }
+
+        // Open modal
+        modalOverlay.classList.remove("hidden");
+
+        // Store which event is being edited
+        eventForm.dataset.editId = event.id;
+      });
+
+      card.appendChild(editBtn);
+    }
 
     // Check if user is already an attendee
     const isAttending = event.attendees.includes(nickname);
