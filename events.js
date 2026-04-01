@@ -81,19 +81,50 @@ const displayEvents = () => {
     joinBtn.textContent = isAttending ? "참여 취소" : "참여하기";
     joinBtn.classList.add(isAttending ? "attending" : "not-attending");
 
-    joinBtn.addEventListener("click", () => {  
+    joinBtn.addEventListener("click", () => {
       if (isAttending) {
         // Remove from attendees
-        event.attendees = event.attendees.filter(a => a !== nickname);
+        event.attendees = event.attendees.filter((a) => a !== nickname);
       } else {
         // Add to attendees
         event.attendees.push(nickname);
       }
       displayEvents(); // Refresh the display
-    });  
+    });
+
+    // attendees section
+    const attendeesSection = document.createElement("div");
+    attendeesSection.classList.add("attendees-section");
+
+    // attendees toggle button
+    const attendessToggle = document.createElement("button");
+    attendeesToggle.classList.add("toggle-btn");
+    attnedeesToggle.textContent = `참여자 ${event.attendees.length}명 ⏷`;
+
+    // attendees list - hidden by default
+    const attendeesList = document.createElement("ul");
+    attendeesList.classList.add("attendees-list", "hidden");
+
+    event.attendees.forEach((attendee) => {
+      const li = document.createElement("li");
+      li.textContent = attendee;
+      attendeesList.appendChild(li);
+    });
+
+    // Toggle visibility on click
+    attendeesToggle.addEventListener("click", () => {
+      attendeesList.classList.toggle("hidden");
+      const isOpen = !attendeesList.classList.contains("hidden");
+      attendeesToggle.textContent = `참여자: ${event.attendees.length}명 ${isOpen ? "⏶" : "⏷"}`;
+    });
+
+    attendeesSection.appendChild(attendeesToggle);
+    attendeesSection.appendChild(attendeesList);
+    card.appendChild(attendeesSection);
 
     card.appendChild(tags);
     card.appendChild(details);
+    card.appendChild(joinBtn);
     eventsContainer.appendChild(card);
   });
 };
