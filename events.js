@@ -49,6 +49,13 @@ const events = [
 
 // 3. Get DOM container
 const eventsContainer = document.getElementById("events");
+// Modal elements
+const addEventBtn = document.getElementById("add-event");
+const modalOverlay = document.getElementById("modal-overlay");
+const cancelBtn = document.getElementById("cancel-btn");
+const eventForm = document.getElementById("event-form");
+const categorySelect = document.getElementById("event-category");
+const subCategoryGroup = document.getElementById("sub-category-group");
 
 // 4. Save and load functions  for localStorage
 // save events to localStorage whenever there's a change
@@ -150,6 +157,29 @@ const displayEvents = () => {
   });
 };
 
-// 6. Run on page load
+// 6. Modal Logic
+// event listeners for opening/closing modal
+
+// Open modal
+addEventBtn.addEventListener("click", () => {
+  modalOverlay.classList.remove("hidden");
+});
+
+// Close modal
+cancelBtn.addEventListener("click", () => {
+  modalOverlay.classList.add("hidden");
+  eventForm.reset(); // clears all form fields
+});
+
+// Show/hide sub-category based on category selection
+categorySelect.addEventListener("change", () => {
+  if (categorySelect.value === "스터디벙") {
+    subCategoryGroup.classList.remove("hiddne");
+  } else {
+    subCategoryGroup.classList.add("hidden");
+  }
+});
+
+// 7. Initialise
 loadEvents();
 displayEvents();
