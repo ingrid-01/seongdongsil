@@ -36,6 +36,75 @@
       <h2>일정</h2>
       <button id="add-event">일정 추가 +</button>
       <div id="events"></div>
+
+      <!-- Modal Overlay -->
+      <div id="modal-overlay" class="hidden">
+        <div id="modal">
+          <h3>새 일정 추가</h3>
+          <form id="event-form">
+            <label for="event-category">카테고리</label>
+            <select id="event-category" required>
+              <option value="">--선택해주세요--</option>
+              <option value="스터디벙">스터디벙</option>
+              <option value="운동벙">운동벙</option>
+              <option value="놀벙">놀벙</option>
+              <option value="정모">정모</option>
+              <option value="외부프로그램">외부프로그램</option>
+            </select>
+
+            <!-- Only show if 스터디벙 is selected -->
+            <div id="sub-category-group" class="hidden">
+              <label for="event-sub">스터디 유형</label>
+              <select id="event-sub">
+                <option value="">--선택해주세요--</option>
+                <option value="열공">열공</option>
+                <option value="반공">반공</option>
+                <option value="디코벙">디코벙</option>
+              </select>
+            </div>
+
+            <label for="event-region">지역</label>
+            <select id="event-region" required>
+              <option value="">--선택해주세요--</option>
+              <option value="의왕">의왕</option>
+              <option value="안양">안양</option>
+              <option value="군포">군포</option>
+              <option value="산본">산본</option>
+              <option value="기타">기타</option>
+            </select>
+
+            <label for="event-title">제목</label>
+            <input
+              type="text"
+              id="event-title"
+              required
+              placeholder="일정 제목을 입력해주세요"
+            />
+
+            <label for="event-date">날짜</label>
+            <input type="date" id="event-date" required />
+
+            <label for="event-start">시작 시간</label>
+            <input type="time" id="event-start" required />
+
+            <label for="event-end">종료 시간</label>
+            <input type="time" id="event-end" required />
+
+            <label for="event-location">장소</label>
+            <input
+              type="text"
+              id="event-location"
+              required
+              placeholder="일정 장소를 입력해주세요"
+            />
+
+            <div class="form-buttons">
+              <button type="submit">저장</button>
+              <button type="button" id="cancel-button">취소</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
     <script src="events.js"></script>
   </body>
