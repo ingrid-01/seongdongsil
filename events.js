@@ -29,6 +29,8 @@ const events = [
     createdBy: "Ingrid",
     attendees: ["Ingrid", "현재"],
     comments: [],
+    description: "",
+    links: [],
   },
   {
     id: "event_002",
@@ -44,6 +46,8 @@ const events = [
     createdBy: "현재",
     attendees: ["현재"],
     comments: [],
+    description: "",
+    links: [],
   },
 ];
 
@@ -56,6 +60,10 @@ const cancelBtn = document.getElementById("cancel-btn");
 const eventForm = document.getElementById("event-form");
 const categorySelect = document.getElementById("event-category");
 const subCategoryGroup = document.getElementById("sub-category-group");
+const addLinkBtn = document.getElementById("add-link-btn");
+const linkInput = document.getElementById("event-link");
+const linksList = document.getElementById("links-list");
+let tempLinks = []; // temporary storage whie form is open
 
 // 4. Save and load functions  for localStorage
 // save events to localStorage whenever there's a change
@@ -137,6 +145,24 @@ const displayEvents = () => {
         document.getElementById("event-start").value = event.startTime;
         document.getElementById("event-end").value = event.endTime;
         document.getElementById("event-location").value = event.location;
+        document.getElementById("event-description").value = event.description || "";
+
+        tempLinks = [...event.links];
+        linksList.innerHTML = "";
+        event.links.forEach(url => {
+          const li = document.createElement("li");
+          li.textContent = url;
+          const removeLinkBtn = document.createElement("button");
+          removeLinkBtn.type = "button";
+          removeLinkBtn.textContent = "x";
+          removeLinkBtn.addEventListener("click", () => {
+            tempLinks = tempLinks.filter(l => l !== url);
+            li.remove();
+          });
+          li.appendChild(removeLinkBtn);
+          linksList.appendChild(li);
+        });
+
 
         // Handle sub-category
         if (event.subCategory) {
@@ -298,6 +324,8 @@ addEventBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", () => {
   modalOverlay.classList.add("hidden");
   eventForm.reset(); // clears all form fields
+  tempLinks = []; // clear temp links
+  linksList.innerHTML = ""; // clear displayed links
 });
 
 // Show/hide sub-category based on category selection
@@ -335,6 +363,10 @@ eventForm.addEventListener("submit", (e) => {
       events[index].startTime = document.getElementById("event-start").value;
       events[index].endTime = document.getElementById("event-end").value;
       events[index].location = document.getElementById("event-location").value;
+      events[index].description = document
+        .getElementById("event-description")
+        .value.trim();
+      events[index].links = [...tempLinks];
     }
     delete eventForm.dataset.editId; // clear edit mode
   } else {
@@ -353,9 +385,41 @@ eventForm.addEventListener("submit", (e) => {
       createdBy: nickname,
       attendees: [nickname],
       comments: [],
+      description: document.getElementById("event-description").value.trim(),
+      links: [...tempLinks],
     };
     events.push(newEvent);
   }
+
+  addLinkBtn.addEventListener("click", () => {
+    const url = linkInput.value.trim();
+
+    if (!url) return; // ignore empty
+
+    // Basic URL validation
+    if (!url.startsWith("http")) {
+      alert("유효한 URL을 입력해주세요 (http:// 또는 https://");
+      return;
+    }
+
+    tempLinks.push(url);
+
+    // Show link in list
+    const li = document.createElement("li");
+    li.textContent = url;
+
+    const removeBtn = document.createElement("button");
+    removeLinkBtn.type = "button";
+    removeLinkBtn.textContent = "x";
+    removeLinkBtn.addEventListener("click", () => {
+      tempLinks = tempLinks.filter((l) => l !== url);
+      li.remove();
+    });
+
+    li.appendChild(removeBtn);
+    linksList.appendChild(li);
+    linkInput.value = ""; // clear input
+  });
 
   saveEvents();
   displayEvents();

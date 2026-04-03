@@ -98,6 +98,18 @@
               placeholder="일정 장소를 입력해주세요"
             />
 
+            <div id="optional-details">
+              <p>추가 정보 (선택사항)</p>
+
+              <label for="event-description">상세 설명</label>
+              <textarea id="event-description" placeholder="이벤트에 대한 상세 설명을 입력해주세요"></textarea>
+
+              <label for="event-link">관련 링크</label>
+              <input type="url" id="event-link" placeholder=""https://example.com" />
+              <button type="button" id="add-link-btn">링크 추가 +</button>
+              <ul id="links-list"></ul>
+            </div>
+
             <div class="form-buttons">
               <button type="submit">저장</button>
               <button type="button" id="cancel-btn">취소</button>
