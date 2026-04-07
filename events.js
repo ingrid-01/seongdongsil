@@ -65,6 +65,18 @@ const detailContent = document.getElementById("detail-content");
 const backBtn = document.getElementById("back-btn");
 let tempLinks = [];
 
+// Filter state
+let activeFilters = {
+  month: "",
+  type: "",
+  area: "",
+};
+
+const filterMonth = document.getElementById("filter-month");
+const filterType = document.getElementById("filter-type");
+const filterArea = document.getElementById("filter-area");
+const filterAll = document.getElementById("filter-all");
+
 // 4. Save/Load
 const saveEvents = () => {
   localStorage.setItem("events", JSON.stringify(events));
