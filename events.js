@@ -64,6 +64,9 @@ const addLinkBtn = document.getElementById("add-link-btn");
 const linkInput = document.getElementById("event-link");
 const linksList = document.getElementById("links-list");
 let tempLinks = []; // temporary storage whie form is open
+const detailView = document.getElementById("detail-view");
+const detailContent = document.getElementById("detail-content");
+const backBtn = document.getElementById("back-btn");
 
 // 4. Save and load functions  for localStorage
 // save events to localStorage whenever there's a change
@@ -145,24 +148,24 @@ const displayEvents = () => {
         document.getElementById("event-start").value = event.startTime;
         document.getElementById("event-end").value = event.endTime;
         document.getElementById("event-location").value = event.location;
-        document.getElementById("event-description").value = event.description || "";
+        document.getElementById("event-description").value =
+          event.description || "";
 
         tempLinks = [...event.links];
         linksList.innerHTML = "";
-        event.links.forEach(url => {
+        event.links.forEach((url) => {
           const li = document.createElement("li");
           li.textContent = url;
           const removeLinkBtn = document.createElement("button");
           removeLinkBtn.type = "button";
           removeLinkBtn.textContent = "x";
           removeLinkBtn.addEventListener("click", () => {
-            tempLinks = tempLinks.filter(l => l !== url);
+            tempLinks = tempLinks.filter((l) => l !== url);
             li.remove();
           });
           li.appendChild(removeLinkBtn);
           linksList.appendChild(li);
         });
-
 
         // Handle sub-category
         if (event.subCategory) {
@@ -309,6 +312,97 @@ const displayEvents = () => {
     card.appendChild(commentsSection);
     card.appendChild(joinBtn);
     eventsContainer.appendChild(card);
+  });
+};
+
+const showDetail = (eventId) => {
+  const event = events.find((e) => e.id === eventId);
+  if (!event) return;
+
+  // Switch views
+  eventsContainer.classList.add("hidden");
+  detailView.classList.remove("hidden");
+
+  // Build detail content
+  const isAttending = event.attendees.includes(nickname);
+  const isCreator = event.createdBy === nickname;
+
+  detailContent.innerHTML = `
+    <div class="detail-tags">
+      <span class="tag category">${event.category}</span>
+      ${event.subCategory ? `<span class="tag sub">${event.subCategory}</span>` : ""}
+      <span class="tag region">${event.region}</span>
+    </div>
+    <h2>${event.title}</h2>
+    <p>📅 ${event.date} (${event.day})</p>
+    <p>⏰ ${event.startTime} ~ ${event.endTime}</p>
+    <p>📍 ${event.location}</p>
+  `;
+
+  // Description if exists
+  if (event.description) {
+    const desc = document.createElement("p");
+    desc.classList.add("detail-description");
+    desc.textContent = event.description;
+    detailContent.appendChild(desc);
+  }
+
+  // Links if exists
+  if (event.links && event.links.length > 0) {
+    const linksDiv = document.createElement("div");
+    linksDiv.classList.add("detail-links");
+    linksDiv.innerHTML = "<h3>관련 링크</h3>";
+    event.links.forEach((url) => {
+      const a = document.createElement("a");
+      a.href = url;
+      a.textContent = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      linksDiv.appendChild(a);
+    });
+    detailContent.appendChild(linksDiv);
+  }
+};
+
+// Attendees
+const attendeesDiv = document.createElement("div");
+attendeesDiv.classList.add("detail-attendees");
+attendeesDiv.innerHTML = `<h4>참여자 (${event.attendees.length}명)</h4>
+  <p>${event.attendees.join(", ")}</p>
+`;
+detailContent.appendChild(attendeesDiv);
+
+// Join/leave button
+const joinBtn = document.createElement("button");
+joinBtn.classList.add("join-btn");
+joinBtn.textContent = isAttending ? "참여 취소" : "참여하기";
+joinBtn.classList.add(isAttending ? "attending" : "not-attending");
+joinBtn.addEventListener("click", () => {
+  if (isAttending) {
+    event.attendees = event.attendees.filter((a) => a !== nickname);
+  } else {
+    event.attendees.push(nickname);
+  }
+  saveEvents();
+  showDetail(eventId); // Refresh detail view
+});
+detailContent.appendChild(joinBtn);
+
+// Creator buttons
+if (isCreator) {
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "수정";
+  editBtn.addEventListener("click", () => {
+    // Pre-fill form with existing data
+    document.getElementById("event-category").value = event.category;
+    document.getElementById("event-region").value = event.region;
+    document.getElementById("event-title").value = event.title;
+    document.getElementById("event-date").value = event.date;
+    document.getElementById("event-start").value = event.startTime;
+    document.getElementById("event-end").value = event.endTime;
+    document.getElementById("event-location").value = event.location;
+    document.getElementById("event-description").value =
+      event.description || "";
   });
 };
 
