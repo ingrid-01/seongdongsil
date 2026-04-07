@@ -34,7 +34,35 @@
     </header>
     <main>
       <h2>일정</h2>
-      <button id="add-event">일정 추가 +</button>
+
+      <div id="filter-bar">
+        <button id="filter-all" class="filter-btn active">ALL</button>
+
+        <select id="filter-month">
+          <option value="">--월 선택--</option>
+        </select>
+
+        <select id="filter-type">
+          <option value="">--모임 유형 선택--</option>
+          <option value="스터디벙">스터디벙</option>  
+          <option value="운동벙">운동벙</option>
+          <option value="놀벙">놀벙</option>
+          <option value="정모">정모</option>
+          <option value="외부프로그램">외부프로그램</option>
+        </select>
+
+        <select id="filter-area">
+          <option value="">--지역 선택--</option>
+          <option value="의왕">의왕</option>
+          <option value="안양">안양</option>
+          <option value="군포">군포</option>
+          <option value="산본">산본</option>
+          <option value="기타">기타</option>
+        </select>
+
+        <button id="add-event">일정 추가 +</button>
+      </div>
+      
       <div id="events"></div>
 
       <!-- Detail view - hidden by default -->
