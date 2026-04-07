@@ -214,7 +214,8 @@ const showDetail = (eventId) => {
 
   // Basic info
   detailContent.innerHTML = `
-    <div class="detail-tags">
+  <button id="back-btn">← 목록으로</button>
+  <div class="detail-tags">
       <span class="tag category">${event.category}</span>
       ${event.subCategory ? `<span class="tag sub">${event.subCategory}</span>` : ""}
       <span class="tag region">${event.region}</span>
@@ -224,6 +225,11 @@ const showDetail = (eventId) => {
     <p>⏰ ${event.startTime} ~ ${event.endTime}</p>
     <p>📍 ${event.location}</p>
   `;
+
+  // Back button - grab it fresh each time.
+  document.getElementById("back-btn").addEventListener("click", () => {
+    detailView.classList.add("hidden");
+  });
 
   // Description
   if (event.description) {
@@ -474,12 +480,6 @@ eventForm.addEventListener("submit", (e) => {
   subCategoryGroup.classList.add("hidden");
   tempLinks = [];
   linksList.innerHTML = "";
-});
-
-// Back button
-backBtn.addEventListener("click", () => {
-  detailView.classList.add("hidden");
-  displayEvents();
 });
 
 // Filter listeners
