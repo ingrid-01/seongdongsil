@@ -91,32 +91,113 @@ const loadEvents = () => {
   }
 };
 
+// Get unique months from events for dropdownn
+const populateMonthFilter = () => {
+  const months = [...new Set(events.map((e) => e.date.slice(0, 7)))].sort();
+  filterMonth.innerHTML = '<option value="">--월 선택--</option>';
+  months.forEach((month) => {
+    const option = document.createElement("option");
+    option.value = month;
+    const [year, mon] = month.split("-");
+    option.textContent = `${mon}월`;
+    filterMonth.appendChild(option);
+  });
+};
+
+// Filter events based on active filters
+const getFilteredEvents = () => {
+  return events.filter((event) => {
+    const monthMatch =
+      !activeFilters.month || event.date.startsWith(activeFilters.month);
+    const typeMatch =
+      !activeFilters.type || event.category === activeFilters.type;
+    const areaMatch =
+      !activeFilters.area || event.region === activeFilters.area;
+    return monthMatch && typeMatch && areaMatch;
+  });
+};
+
+// Group events by month
+const groupByMonth = (eventsList) => {
+  const grouped = {};
+  eventsList.forEach((event) => {
+    const month = event.date.slice(0, 7); // "2026-03"
+    if (!grouped[month]) {
+      grouped[month] = [];
+    }
+    grouped[month].push(event);
+  });
+  return grouped;
+};
+
 // 5. Display Events — simple list view only
 const displayEvents = () => {
   eventsContainer.innerHTML = "";
+  populateMonthFilter();
 
-  events.forEach((event) => {
-    const card = document.createElement("div");
-    card.classList.add("event-card");
+  const filtered = getFilteredEvents();
 
-    card.innerHTML = `
-      <div class="event-tags">
-        <span class="tag category">${event.category}</span>
-        ${event.subCategory ? `<span class="tag sub">${event.subCategory}</span>` : ""}
-        <span class="tag region">${event.region}</span>
-      </div>
-      <h3>${event.title}</h3>
-      <p>📅 ${event.date} (${event.day})</p>
-      <p>⏰ ${event.startTime} ~ ${event.endTime}</p>
-      <p>📍 ${event.location}</p>
-      <p class="more-hint">더보기...</p>
-    `;
+  if (filtered.length === 0) {
+    eventsContainer.innerHTML = "<p class='no-events'>일정이 없습니다</p>";
+    return;
+  }
 
-    card.addEventListener("click", () => {
-      showDetail(event.id);
+  const grouped = groupByMonth(filtered);
+  const sortedMonths = Object.keys(grouped).sort();
+
+  sortedMonths.forEach((month) => {
+    // Month header
+    const [year, mon] = month.split("-");
+    const monthHeader = document.createElement("h3");
+    monthHeader.classList.add("month-header");
+    monthHeader.textContent = `${mon}월`;
+    eventsContainer.appendChild(monthHeader);
+
+    // Sort events within month by date
+    const monthEvents = grouped[month].sort((a, b) =>
+      a.date.localeCompare(b.date),
+    );
+
+    monthEvents.forEach((event) => {
+      const card = document.createElement("div");
+      card.classList.add("event-card");
+
+      // Left — date section
+      const dateSection = document.createElement("div");
+      dateSection.classList.add("card-date");
+      dateSection.innerHTML = `
+        <span class="card-day-num">${event.date.split("-")[2]}</span>
+        <span class="card-day">${event.day}</span>
+        <span class="card-time">${event.startTime}~${event.endTime}</span>
+      `;
+
+      // Center — details section
+      const detailsSection = document.createElement("div");
+      detailsSection.classList.add("card-details");
+      detailsSection.innerHTML = `
+        <div class="card-tags">
+          <span class="tag category">${event.category}</span>
+          ${event.subCategory ? `<span class="tag sub">${event.subCategory}</span>` : ""}
+          <span class="tag region">${event.region}</span>
+        </div>
+        <p class="card-title">${event.title}</p>
+        <p class="card-location">📍 ${event.location}</p>
+      `;
+
+      // Right — 더보기 button
+      const moreBtn = document.createElement("button");
+      moreBtn.classList.add("more-btn");
+      moreBtn.textContent = "더보기";
+      moreBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevent card click
+        showDetail(event.id);
+      });
+
+      card.appendChild(dateSection);
+      card.appendChild(detailsSection);
+      card.appendChild(moreBtn);
+      eventsContainer.appendChild(card);
     });
-
-    eventsContainer.appendChild(card);
   });
 };
 
@@ -398,6 +479,30 @@ eventForm.addEventListener("submit", (e) => {
 // Back button
 backBtn.addEventListener("click", () => {
   detailView.classList.add("hidden");
+  displayEvents();
+});
+
+// Filter listeners
+filterMonth.addEventListener("change", () => {
+  activeFilters.month = filterMonth.value;
+  displayEvents();
+});
+
+filterType.addEventListener("change", () => {
+  activeFilters.type = filterType.value;
+  displayEvents();
+});
+
+filterArea.addEventListener("change", () => {
+  activeFilters.area = filterArea.value;
+  displayEvents();
+});
+
+filterAll.addEventListener("click", () => {
+  activeFilters = { month: "", type: "", area: "" };
+  filterMonth.value = "";
+  filterType.value = "";
+  filterArea.value = "";
   displayEvents();
 });
 
