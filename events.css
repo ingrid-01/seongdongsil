@@ -33,7 +33,15 @@
   background-color: rgba(0, 0, 0, 0.5); /* dark overlays behind detail view */
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* align to top so long content is readable */
+  align-items: center; /* align to top so long content is readable */
   z-index: 100; /* on top of other content */
   overflow-y: auto; /* scroll if content too tall */
+}
+
+#detail-content {
+  background-color: white;
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
 }

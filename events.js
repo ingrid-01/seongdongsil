@@ -117,7 +117,6 @@ const showDetail = (eventId) => {
   const isCreator = event.createdBy === nickname;
 
   // Switch views
-  eventsContainer.classList.add("hidden");
   detailView.classList.remove("hidden");
 
   // Basic info
@@ -387,7 +386,6 @@ eventForm.addEventListener("submit", (e) => {
 // Back button
 backBtn.addEventListener("click", () => {
   detailView.classList.add("hidden");
-  eventsContainer.classList.remove("hidden");
   displayEvents();
 });
 
