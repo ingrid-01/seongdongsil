@@ -23,3 +23,17 @@
   max-height: 90vh;
   overflow-y: auto; /* scroll if content too tall */
 }
+
+#detail-view {
+  position: fixed; /* stays on screen while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlays behind detail view */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* align to top so long content is readable */
+  z-index: 100; /* on top of other content */
+  overflow-y: auto; /* scroll if content too tall */
+}
