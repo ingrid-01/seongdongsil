@@ -512,5 +512,18 @@ flatpickr("#event-date", {
   dateFormat: "Y-m-d",
   locale: "ko",
   allowInput: true,
+  MinDate: "today",
+});
+flatpickr("#event-start", {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true,
+});
+flatpickr("#event-end", {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i:",
+  time_24hr: true,
 });
 displayEvents();
