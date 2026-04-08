@@ -214,8 +214,11 @@ const showDetail = (eventId) => {
 
   // Basic info
   detailContent.innerHTML = `
-  <button id="back-btn">← 목록으로</button>
-  <div class="detail-tags">
+    <div class="detail-header">
+      <button id="back-btn">← 목록으로</button>
+      <div class="detail-actions"></div>
+    </div>
+    <div class="detail-tags">
       <span class="tag category">${event.category}</span>
       ${event.subCategory ? `<span class="tag sub">${event.subCategory}</span>` : ""}
       <span class="tag region">${event.region}</span>
@@ -317,7 +320,8 @@ const showDetail = (eventId) => {
       modalOverlay.classList.remove("hidden");
       eventForm.dataset.editId = event.id;
     });
-    detailContent.appendChild(editBtn);
+    const detailActions = document.querySelector(".detail-actions");
+    detailActions.appendChild(editBtn);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -333,7 +337,7 @@ const showDetail = (eventId) => {
         displayEvents();
       }
     });
-    detailContent.appendChild(deleteBtn);
+    detailActions.appendChild(deleteBtn);
   }
 
   // Comments
@@ -542,7 +546,7 @@ flatpickr("#event-start", {
 flatpickr("#event-end", {
   enableTime: true,
   noCalendar: true,
-  dateFormat: "H:i:",
+  dateFormat: "H:i",
   time_24hr: true,
 });
 displayEvents();

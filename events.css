@@ -73,6 +73,18 @@ main h2 {
   background-color: #f5f5f5;
 }
 
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 8px;
+}
+
 /* Tags centered above title */
 .detail-tags {
   display: flex;
@@ -154,7 +166,7 @@ main h2 {
   border: 1px solid #585858;
   background-color: white;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 0;
   margin-right: 8px;
 }
 
