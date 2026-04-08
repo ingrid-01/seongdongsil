@@ -29,6 +29,12 @@ main h2 {
   overflow-y: auto; /* scroll if content too tall */
 }
 
+#modal h3 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
 #detail-view {
   position: fixed; /* stays on screen while scrolling */
   top: 0;
@@ -71,20 +77,43 @@ main h2 {
   cursor: pointer;
 }
 
-#filter-all {
-  background-color: #333;
-  color: white;
+.filter-btn.active {
+  font-weight: bold;
   border-color: #333;
-}
-
-#add-event {
-  margin-left: auto; /* pushes to far right */
+  border-width: 2px;
 }
 
 #filter-bar select:focus,
 #filter-bar button:hover {
   background-color: #f5f5f5;
   color: #333;
+}
+
+/* Form layout - each field on its own line */
+#event-form label {
+  display: block;
+  font-size: 13px;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+#event-form input,
+#event-form select,
+#event-form textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #585858;
+  border-radius: 0; /* square edges */
+  background-color: white;
+}
+
+#event-form textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
 /* Month header */
@@ -97,12 +126,128 @@ main h2 {
   margin-bottom: 10px;
 }
 
+#optional-details > p {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-top: 0; /* overrides the general label margin-top since form-row handles spacing */
+}
+
+.form-group label {
+  margin-top: 0; /* overrides the general label margin-top since form-row handle spacing */
+}
+
+.form-row + * {
+  margin-top: 16px; /* breathing room after each row */
+}
+
+/* Link input row */
+#event-link {
+  display: inline-block;
+  width: calc(100% - 90px);
+}
+
+#add-link-btn {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  padding: 8px 12px;
+  margin: 5px 0;
+  border: 1px solid #585858;
+  background-color: white;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+#add-link-btn:hover {
+  background-color: #f5f5f5;
+}
+
+/* Link list */
+#links-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+
+#links-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#links-list li button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 12px;
+}
+
+#links-list li button:hover {
+  color: #333;
+}
+
+/* 저장 / 취소 buttons */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.form-buttons button {
+  flex: 1;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #585858;
+  cursor: pointer;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: #555;
+}
+
+.form-buttons button[type="button"] {
+  background-color: white;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #f5f5f5;
+}
+
 /* Event cards - long boxes like tools page */
 #events {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 700px;
   padding: 10px 0;
+  margin: 0 auto;
 }
 
 .event-card {
