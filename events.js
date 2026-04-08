@@ -260,7 +260,7 @@ const showDetail = (eventId) => {
   attendeesDiv.classList.add("detail-attendees");
   attendeesDiv.innerHTML = `
     <h4>참여자 ${event.attendees.length}명</h4>
-    <p>${event.attendees.join(", ")}</p>
+    ${event.attendees.map((a) => `<p>${a}</p>`).join("")}
   `;
   detailContent.appendChild(attendeesDiv);
 
@@ -348,7 +348,8 @@ const showDetail = (eventId) => {
 
     if (comment.nickname === nickname) {
       const deleteComment = document.createElement("button");
-      deleteComment.textContent = "삭제";
+      deleteComment.textContent = "x";
+      deleteComment.classList.add("comment-delete-btn");
       deleteComment.addEventListener("click", () => {
         event.comments.splice(index, 1);
         saveEvents();
@@ -385,6 +386,23 @@ const showDetail = (eventId) => {
 // 6. Modal Logic
 addEventBtn.addEventListener("click", () => {
   modalOverlay.classList.remove("hidden");
+});
+
+// Click outside modal to close
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) {
+    modalOverlay.classList.add("hidden");
+    eventForm.reset();
+    tempLinks = [];
+    linksList.innerHTML = "";
+  }
+});
+
+// Click outside detail view to close
+detailView.addEventListener("click", (e) => {
+  if (e.target === detailView) {
+    detailView.classList.add("hidden");
+  }
 });
 
 cancelBtn.addEventListener("click", () => {

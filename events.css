@@ -44,7 +44,7 @@ main h2 {
   background-color: rgba(0, 0, 0, 0.5); /* dark overlays behind detail view */
   display: flex;
   justify-content: center;
-  align-items: center; /* align to top so long content is readable */
+  align-items: flex-start; /* align to top so long content is readable */
   z-index: 100; /* on top of other content */
   overflow-y: auto; /* scroll if content too tall */
 }
@@ -55,6 +55,187 @@ main h2 {
   max-width: 600px;
   margin: 40px auto;
   padding: 40px;
+}
+
+/* Back button */
+#detail-content #back-btn {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  padding: 8px 16px;
+  border: 1px solid #585858;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#detail-content #back-btn:hover {
+  background-color: #f5f5f5;
+}
+
+/* Tags centered above title */
+.detail-tags {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* Detail title centered */
+#detail-content h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Spacing after location */
+#detail-content p {
+  margin-bottom: 8px;
+}
+
+/* Divider spacing before attendees */
+.detail-attendees {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.detail-attendees h4 {
+  margin-bottom: 8px;
+}
+
+/* Attendees listed vertically, no bullets */
+.detail-attendees p {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 참여하기 / 참여취소 button */
+.join-btn {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 14px;
+  border: 1px solid #585858;
+  cursor: pointer;
+}
+
+.join-btn.not-attending {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.join-btn.not-attending:hover {
+  background-color: #555;
+}
+
+.join-btn.attending {
+  background-color: white;
+  color: #333;
+}
+
+.join-btn.attending:hover {
+  background-color: #f5f5f5;
+}
+
+/* Edit / Delete buttons */
+.edit-btn,
+.delete-btn {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  padding: 8px 16px;
+  border: 1px solid #585858;
+  background-color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+
+.edit-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.delete-btn {
+  border-color: #c0392b;
+  color: #c0392b;
+}
+
+.delete-btn:hover {
+  background-color: #fff0f0;
+}
+
+/* Comments section */
+.detail-comments {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.detail-comments h4 {
+  margin-bottom: 12px;
+}
+
+.comment {
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px soid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-delete-btn {
+  font-size: 12px;
+  padding: 2px 6px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  color: #888;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.comment-delete-btn:hover {
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* comment input area */
+.detail-comments input[type="text"] {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  padding: 8px 12px;
+  border: 1px solid #585858;
+  margin-top: 12px;
+  min-height: 50px;
+}
+
+/* 게시 button */
+.detail-comments button:last-of-type {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 14px;
+  border: 1px solid #585858;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.detail-comments button:last-of-type:hover {
+  background-color: #555;
 }
 
 /* Filter bar */
