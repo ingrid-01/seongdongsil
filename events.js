@@ -508,4 +508,9 @@ filterAll.addEventListener("click", () => {
 
 // 7. Initialise
 loadEvents();
+flatpickr("#event-date", {
+  dateFormat: "Y-m-d",
+  locale: "ko",
+  allowInput: true,
+});
 displayEvents();
