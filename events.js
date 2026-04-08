@@ -366,6 +366,7 @@ const showDetail = (eventId) => {
 
   const commentSubmit = document.createElement("button");
   commentSubmit.textContent = "게시";
+  commentSubmit.classList.add("comment-submit-btn");
   commentSubmit.addEventListener("click", () => {
     const text = commentInput.value.trim();
     if (!text) return;
@@ -530,7 +531,7 @@ flatpickr("#event-date", {
   dateFormat: "Y-m-d",
   locale: "ko",
   allowInput: true,
-  MinDate: "today",
+  minDate: "today",
 });
 flatpickr("#event-start", {
   enableTime: true,

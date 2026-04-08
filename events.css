@@ -185,7 +185,7 @@ main h2 {
 .comment {
   font-size: 13px;
   padding: 8px 0;
-  border-bottom: 1px soid #eee;
+  border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -221,7 +221,7 @@ main h2 {
 }
 
 /* 게시 button */
-.detail-comments button:last-of-type {
+.comment-submit-btn {
   display: block;
   width: 100%;
   margin-top: 8px;
@@ -234,7 +234,7 @@ main h2 {
   cursor: pointer;
 }
 
-.detail-comments button:last-of-type:hover {
+.comment-submit-btn:hover {
   background-color: #555;
 }
 
