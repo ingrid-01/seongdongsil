@@ -12,42 +12,7 @@ if (!nickname || nickname.trim() === "") {
 console.log(`현재 사용자: ${nickname}`);
 
 // 2. Events array
-const events = [
-  {
-    id: "event_001",
-    category: "스터디벙",
-    subCategory: "열공",
-    region: "의왕",
-    title: "같이 공부할 사람!",
-    date: "2026-03-30",
-    day: "월",
-    startTime: "14:30",
-    endTime: "20:30",
-    location: "포일 청년발전소",
-    createdBy: "Ingrid",
-    attendees: ["Ingrid", "현재"],
-    comments: [],
-    description: "",
-    links: [],
-  },
-  {
-    id: "event_002",
-    category: "운동벙",
-    subCategory: null,
-    region: "안양",
-    title: "저녁 러닝 같이 해요!",
-    date: "2026-04-01",
-    day: "수",
-    startTime: "19:00",
-    endTime: "21:00",
-    location: "안양천",
-    createdBy: "현재",
-    attendees: ["현재"],
-    comments: [],
-    description: "",
-    links: [],
-  },
-];
+const events = [];
 
 // 3. DOM References
 const eventsContainer = document.getElementById("events");
