@@ -19,54 +19,68 @@ main {
 
 #about {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 12%;
+  right: 12%;
 }
 
 #about img {
-  width: 20vw;
-  max-width: 230px;
-  min-width: 80px;
+  width: 16vw;
+  max-width: 200px;
+  min-width: 70px;
   margin: 20px;
 }
 
 #space {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 12%;
+  left: 12%;
 }
 
 #space img {
-  width: 17vw;
-  max-width: 180px;
-  min-width: 70px;
+  width: 14vw;
+  max-width: 170px;
+  min-width: 60px;
   margin: 10px;
 }
 
 #tools {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 12%;
+  left: 12%;
 }
 
 #tools img {
-  width: 18vw;
-  max-width: 230px;
-  min-width: 90px;
+  width: 15vw;
+  max-width: 190px;
+  min-width: 65px;
   margin: 10px;
 }
 
 #contact {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 12%;
+  right: 12%;
 }
 
 #contact img {
-  width: 17vw;
-  max-width: 200px;
-  min-width: 100px;
+  width: 15vw;
+  max-width: 190px;
+  min-width: 65px;
   margin: 10px;
+}
+
+#events {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#events img {
+  width: 14vw;
+  max-width: 200px;
+  min-width: 65px;
+  margin: 5px;
 }
 
 .illust-link {
@@ -86,7 +100,7 @@ main {
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   main {
     min-height: auto;
     position: static;
@@ -115,6 +129,12 @@ main {
   #tools,
   #contact {
     position: static;
+  }
+
+  #events {
+    position: static;
+    transform: none;
+    grid-column: span 2; /* takes full width, entered on its own row */
   }
 
   .illust-link {
