@@ -127,13 +127,13 @@ main {
   #about,
   #space,
   #tools,
-  #contact {
-    position: static;
-  }
-
+  #contact,
   #events {
     position: static;
     transform: none;
+  }
+
+  #events {
     grid-column: span 2; /* takes full width, entered on its own row */
   }
 
