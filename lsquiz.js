@@ -221,5 +221,5 @@ document.getElementById("btn-retry").addEventListener("click", function () {
   scores.T = 0;
   scores.P = 0;
   document.getElementById("progress-bar").style.width = "0%";
-  showScreen('screen-intro');
+  showScreen("screen-intro");
 });
