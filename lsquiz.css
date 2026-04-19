@@ -106,3 +106,45 @@ h1 {
   width: 0%;
   transition: width 0.4s ease;
 }
+
+/* -- QUIZ -- */
+.question-meta {
+  font-size: 0.8rem;
+  color: var(--quiz-muted);
+  letter-spacing: 0.04em;
+  margin: 0 0 1rem;
+}
+
+.question-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.65;
+  margin: 0 0 2rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  text-align: left;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid var(--quiz-border);
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  cursor: pointer;
+  color: var(--quiz-primary);
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.option-btn:hover {
+  background: var(--quiz-hover);
+  border-color: var(--quiz-primary);
+}
+
