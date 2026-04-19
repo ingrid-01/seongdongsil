@@ -99,3 +99,9 @@ let curentQ = 0;
 const scores = { A: 0, R: 0, T: 0, P: 0 };
 
 // -- SCREEN SWITCHING --
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach((s) => {
+    s.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
