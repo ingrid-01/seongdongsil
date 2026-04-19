@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 :root {
@@ -17,8 +18,8 @@
 
 body {
   background: var(--quiz-bg);
-  font-family: "Nanum Myeongjo", serif;
   color: var(--quiz-primary);
+  font-family: "Nanum Myeongjo", serif;
   margin: 0;
   padding: 0;
 }

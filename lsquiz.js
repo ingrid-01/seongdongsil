@@ -181,7 +181,7 @@ function showResult() {
       .join(" + ");
     document.getElementById("result-type").textContent = names;
     document.getElementById("result-tagline").textContent =
-      "여러 학습 유형이 특성을 가지고 있습니다!";
+      "당신은 여러 학습 유형이 특성을 가지고 있습니다!";
     document.getElementById("result-body").innerHTML = topStyles
       .map(function (s) {
         return (
