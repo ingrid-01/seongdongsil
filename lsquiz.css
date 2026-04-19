@@ -29,3 +29,36 @@ body {
 .screen.active {
   display: block;
 }
+
+.quiz-container {
+  max-width: var(--quiz-max);
+  margin: 0 auto;
+}
+
+/* -- Intro -- */
+.screen-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--quiz-muted);
+  margin: 0 0 1.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 1.25rem;
+}
+
+.intro-desc {
+  font-size: 1rem;
+  line-height: 1.85;
+  margin: 0 0 0.75rem;
+}
+
+.intro-meta {
+  font-size: 0.82rem;
+  color: var(--quiz-muted);
+  margin: 0 0 2.5rem;
+}
