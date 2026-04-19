@@ -105,3 +105,33 @@ function showScreen(id) {
   });
   document.getElementById(id).classList.add("active");
 }
+
+// -- RENDER QUESTION --
+function renderQuestion() {
+  const q = questions[currentQ];
+  const total = questions.length;
+
+  //PROGRESS BAR
+  const pct = (currentQ / total) * 100;
+  document.getElementById("progress-bar").style.width = `${pct} %`;
+
+  // QUESTION NUMBER + TEXT
+  document.getElementById("question-meta").textContent =
+    `질문 ${currentQ + 1} / ${total}`;
+  document.getElementById("question-text").textContent = q.text;
+
+  // ANSWER OPTIONS - built from data, not hardcoded HTML
+  const optionsEl = document.getElementById('options');
+  optionsEl.innerHTML = ''; 
+
+  q.options.forEach(function(opt) {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.textContent = opt.text;
+    btn.addEventListener('click', function() {
+      handleAnswer(opt.style);
+    });
+    optionsEl.appendChild(btn);
+  });
+}
+
