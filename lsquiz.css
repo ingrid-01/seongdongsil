@@ -1,4 +1,9 @@
 /* quiz.css - 심리테스트 page styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 :root {
   --quiz-max: 600px;
@@ -65,15 +70,18 @@ h1 {
 }
 
 /* -- Buttons -- */
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   padding: 13px 32px;
-  background: var(--quiz-primary);
-  color: white;
-  border: none;
-  font-family: "Nanum Myeongjo", serif;
   font-size: 1rem;
   cursor: pointer;
   display: inline-block;
+}
+
+.btn-primary {
+  background: var(--quiz-primary);
+  color: white;
+  border: none;
 }
 
 .btn-primary:hover {
@@ -81,13 +89,10 @@ h1 {
 }
 
 .btn-secondary {
-  padding: 11px 28px;
   background: transparent;
   color: var(--quiz-primary);
   border: 1px solid var(--quiz-border);
-  font-family: "Nanum Myeongjo", serif;
-  font-size: 0.92rem;
-  cursor: pointer;
+  margin-top: 2rem;
 }
 
 .btn-secondary:hover {
@@ -134,7 +139,6 @@ h1 {
   padding: 16px 20px;
   background: white;
   border: 1px solid var(--quiz-border);
-  font-family: "Nanum Myeongjo", serif;
   font-size: 0.93rem;
   line-height: 1.65;
   cursor: pointer;
