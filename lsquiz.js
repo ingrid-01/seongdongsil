@@ -146,3 +146,64 @@ function handleAnswer(style) {
     showResult();
   }
 }
+
+// -- Calculate + show Result --
+function showResult() {
+  // Find the max score
+  const maxScore = Math.max(scores.A, scores.R, scores.T, scores.P);
+
+  // Find all styles tied at the top (handles 1 or 2 dominant styles)
+  const topStyles = Object.keys(scores).filter(function (s) {
+    return scores[s] === maxScore;
+  });
+
+  if (topStyles.length === 1) {
+    // Single dominant style
+    const r = results[topStyles[0]];
+    document.getElementById("result-type").textContent = r.name;
+    document.getElementById("result-tagline").textContent = r.tagline;
+    document.getElementById("result-body").innerHTML =
+      "<strong>강점:</strong> " +
+      r.strengths +
+      "<br><br>" +
+      "<strong>약점:</strong> " +
+      r.weaknesses +
+      "<br><br>" +
+      "<strong>올라운더가 되기 위한 팁:</strong> " +
+      r.growth +
+      "<br><br>";
+  } else {
+    // Two dominant styles - show both
+    const names = topStyles
+      .map(function (s) {
+        return results[s].name;
+      })
+      .join(" + ");
+    document.getElementById("result-type").textContent = names;
+    document.getElementById("result-tagline").textContent =
+      "두 가지 학습 유형이 특성을 가지고 있습니다!";
+    document.getElementById("result-body").innerHTML = topStyles
+      .map(function (s) {
+        return (
+          "<strong>" +
+          results[s].name +
+          ":</strong><br>" +
+          "<strong>강점:</strong> " +
+          results[s].strengths +
+          "<br><br>" +
+          "<strong>약점:</strong> " +
+          results[s].weaknesses +
+          "<br><br>" +
+          "<strong>올라운더가 되기 위한 팁:</strong> " +
+          results[s].growth +
+          "<br><br>"
+        );
+      })
+      .join("");
+  }
+
+  // Progress bar to 100%
+  document.getElementById("progress-bar").style.width = "100%";
+
+  showScreen("screen-result");
+}
