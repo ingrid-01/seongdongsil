@@ -95,7 +95,7 @@ const results = {
 };
 
 // -- STATE --
-let curentQ = 0;
+let currentQ = 0;
 const scores = { A: 0, R: 0, T: 0, P: 0 };
 
 // -- SCREEN SWITCHING --
@@ -113,7 +113,7 @@ function renderQuestion() {
 
   //PROGRESS BAR
   const pct = (currentQ / total) * 100;
-  document.getElementById("progress-bar").style.width = `${pct} %`;
+  document.getElementById("progress-bar").style.width = `${pct}%`;
 
   // QUESTION NUMBER + TEXT
   document.getElementById("question-meta").textContent =
@@ -181,7 +181,7 @@ function showResult() {
       .join(" + ");
     document.getElementById("result-type").textContent = names;
     document.getElementById("result-tagline").textContent =
-      "두 가지 학습 유형이 특성을 가지고 있습니다!";
+      "여러 학습 유형이 특성을 가지고 있습니다!";
     document.getElementById("result-body").innerHTML = topStyles
       .map(function (s) {
         return (
@@ -209,7 +209,7 @@ function showResult() {
 }
 
 // -- Event Listeners --
-document.getElementById("btn-retry").addEventListener("click", function () {
+document.getElementById("btn-start").addEventListener("click", function () {
   showScreen("screen-quiz");
   renderQuestion();
 });
@@ -221,5 +221,5 @@ document.getElementById("btn-retry").addEventListener("click", function () {
   scores.T = 0;
   scores.P = 0;
   document.getElementById("progress-bar").style.width = "0%";
-  showScreen("screen-intro");
+  showScreen('screen-intro');
 });
