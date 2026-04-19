@@ -207,3 +207,19 @@ function showResult() {
 
   showScreen("screen-result");
 }
+
+// -- Event Listeners --
+document.getElementById("btn-retry").addEventListener("click", function () {
+  showScreen("screen-quiz");
+  renderQuestion();
+});
+
+document.getElementById("btn-retry").addEventListener("click", function () {
+  currentQ = 0;
+  scores.A = 0;
+  scores.R = 0;
+  scores.T = 0;
+  scores.P = 0;
+  document.getElementById("progress-bar").style.width = "0%";
+  showScreen("screen-intro");
+});
