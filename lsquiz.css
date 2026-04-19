@@ -2,5 +2,30 @@
 
 :root {
   --quiz-max: 600px;
-  
+  --quiz-primary: #2c2c2a;
+  --quiz-accent: #1d9e75;
+  --quiz-muted: #888780;
+  --quiz-border: #d3d1c7;
+  --quiz-hover: #f1efe8;
+}
+
+body {
+  background: var(--quiz-bg);
+  font-family: "Nanum Myeongjo", serif;
+  color: var(--quiz-primary);
+  margin: 0;
+  padding: 0;
+}
+
+#quiz-app {
+  min-height: 100vh;
+  padding: 5rem 1.25rem;
+}
+
+/* Screen switching - only .active is visible */
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
 }
