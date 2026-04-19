@@ -148,3 +148,26 @@ h1 {
   border-color: var(--quiz-primary);
 }
 
+/* -- Results -- */
+.result-type {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--quix-accent);
+  margin: 0 0 0.5rem;
+}
+
+.result-tagline {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 0 2rem;
+}
+
+.result-body {
+  font-size: 0.93rem;
+  line-height: 1.9;
+  color: #5f5e5a;
+}
+
+.result-body strong {
+  color: var(--quiz-primary);
+}
