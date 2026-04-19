@@ -93,3 +93,9 @@ const results = {
       "때로는 당장 써먹지 못해도 배울 가치가 있는 것들이 있습니다. 호기심 자체를 목적으로 삼는 탐구 시간을 만들어 보세요. 이론형 (Theorist) 유형의 친구와 함께 배우면 큰 도움이 됩니다.",
   },
 };
+
+// -- STATE --
+let curentQ = 0;
+const scores = { A: 0, R: 0, T: 0, P: 0 };
+
+// -- SCREEN SWITCHING --
