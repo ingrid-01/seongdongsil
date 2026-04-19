@@ -92,6 +92,17 @@ const results = {
     growth:
       "때로는 당장 써먹지 못해도 배울 가치가 있는 것들이 있습니다. 호기심 자체를 목적으로 삼는 탐구 시간을 만들어 보세요. 이론형 (Theorist) 유형의 친구와 함께 배우면 큰 도움이 됩니다.",
   },
+  ALL: {
+    name: "올라운더 (All-Rounder)",
+    tagline:
+      "특정 유형에 치우치지 않고 상황에 따라 유연하게 학습하는 사람입니다!",
+    strengths:
+      "어떤 학습 환경에서도 적응할 수 있는 유연성을 갖추고 있습니다. 행동, 성찰, 이론, 실용 - 네 가지 방식을 모두 고루 활용할 수 있다는 것은 큰 강점입니다.",
+    weaknesses:
+      "특정 유형에 집중하지 않다 보니, 상황에 따라 어떤 방식을 선택해야 할지 고민이 될 수 있습니다. 때로는 네 가지 방식을 모두 활용하려다 보니, 결정이 늦어지거나 에너지가 분산될 수 있습니다.",
+    growth:
+      "자신의 네 가지 학습 유형을 모두 인식하고 상황에 맞게 의도적으로 활용하는 연습을 해보세요. 예를 들어, 새로운 주제를 배울 때는 먼저 행동형으로 빠르게 시작해보고 그 후에는 성찰형으로 돌아보며 이론형으로 원리를 이해하고 실용형으로 적용해보는 식입니다. 이렇게 네 가지 방식을 순환적으로 활용하면 올라운더로서의 강점을 극대화할 수 있습니다.",
+  },
 };
 
 // -- STATE --
@@ -157,7 +168,21 @@ function showResult() {
     return scores[s] === maxScore;
   });
 
-  if (topStyles.length === 1) {
+  if (topStyles.length === 4) {
+    const r = results.ALL;
+    document.getElementById("result-type").textContent = r.name;
+    document.getElementById("result-tagline").textContent = r.tagline;
+    document.getElementById("result-body").innerHTML =
+      "<strong>강점:</strong> " +
+      r.strengths +
+      "<br><br>" +
+      "<strong>약점:</strong> " +
+      r.weaknesses +
+      "<br><br>" +
+      "<strong>올라운더가 되기 위한 팁:</strong> " +
+      r.growth +
+      "<br><br>";
+  } else if (topStyles.length === 1) {
     // Single dominant style
     const r = results[topStyles[0]];
     document.getElementById("result-type").textContent = r.name;
@@ -173,7 +198,7 @@ function showResult() {
       r.growth +
       "<br><br>";
   } else {
-    // Two dominant styles - show both
+    // multiple dominant styles
     const names = topStyles
       .map(function (s) {
         return results[s].name;
