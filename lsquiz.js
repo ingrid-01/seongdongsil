@@ -121,17 +121,28 @@ function renderQuestion() {
   document.getElementById("question-text").textContent = q.text;
 
   // ANSWER OPTIONS - built from data, not hardcoded HTML
-  const optionsEl = document.getElementById('options');
-  optionsEl.innerHTML = ''; 
+  const optionsEl = document.getElementById("options");
+  optionsEl.innerHTML = "";
 
-  q.options.forEach(function(opt) {
-    const btn = document.createElement('button');
-    btn.className = 'option-btn';
+  q.options.forEach(function (opt) {
+    const btn = document.createElement("button");
+    btn.className = "option-btn";
     btn.textContent = opt.text;
-    btn.addEventListener('click', function() {
+    btn.addEventListener("click", function () {
       handleAnswer(opt.style);
     });
     optionsEl.appendChild(btn);
   });
 }
 
+// -- Handle Answer --
+function handleAnswer(style) {
+  scores[style]++; // add 1 to that style's tally
+  currentQ++; // move to next question
+
+  if (currentQ < questions.length) {
+    renderQuestion(); // show next question
+  } else {
+    showResult();
+  }
+}
