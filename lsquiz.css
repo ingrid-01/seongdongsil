@@ -1,179 +1,397 @@
-/* quiz.css - 심리테스트 page styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  font-family: inherit;
-}
+/* =============================================
+   lsquiz.css — 심리테스트 page styles
+   Complements the global style.css
+   ============================================= */
 
+/* -- CUSTOM PROPERTIES -- */
 :root {
-  --quiz-max: 600px;
-  --quiz-primary: #2c2c2a;
-  --quiz-bg: #f9f8f5;
-  --quiz-accent: #1d9e75;
-  --quiz-muted: #888780;
-  --quiz-border: #d3d1c7;
-  --quiz-hover: #f1efe8;
+  --quiz-bg: #faf8f4;
+  --quiz-surface: #ffffff;
+  --quiz-border: #e8e2d9;
+  --quiz-text: #2c2c2c;
+  --quiz-text-soft: #6b6560;
+  --quiz-accent: #3d3530;
+
+  /* Learning style accent colours */
+  --color-activist: #c0392b;
+  --color-reflector: #2471a3;
+  --color-theorist: #b7950b;
+  --color-pragmatist: #1e8449;
+  --color-allrounder: #6c3483;
+
+  --quiz-radius: 12px;
+  --quiz-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
-body {
-  background: var(--quiz-bg);
-  color: var(--quiz-primary);
-  font-family: "Nanum Myeongjo", serif;
-  margin: 0;
-  padding: 0;
-}
-
+/* -- LAYOUT -- */
 #quiz-app {
   min-height: 100vh;
-  padding: 5rem 1.25rem;
+  background-color: var(--quiz-bg);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Screen switching - only .active is visible */
+.quiz-container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+  box-sizing: border-box;
+}
+
+/* -- SCREEN SWITCHING -- */
 .screen {
   display: none;
 }
+
 .screen.active {
   display: block;
 }
 
-.quiz-container {
-  max-width: var(--quiz-max);
-  margin: 0 auto;
+/* =============================================
+   INTRO SCREEN
+   ============================================= */
+#screen-intro .quiz-container {
+  text-align: center;
 }
 
-/* -- Intro -- */
+.intro-illustration {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 24px;
+  display: block;
+}
+
 .screen-label {
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--quiz-text-soft);
+  margin: 0 0 12px;
   text-transform: uppercase;
-  color: var(--quiz-muted);
-  margin: 0 0 1.5rem;
 }
 
-h1 {
-  font-size: 2rem;
+#screen-intro h1 {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: clamp(26px, 5vw, 36px);
   font-weight: 700;
-  line-height: 1.35;
-  margin: 0 0 1.25rem;
+  color: var(--quiz-text);
+  margin: 0 0 20px;
+  line-height: 1.3;
 }
 
 .intro-desc {
-  font-size: 1rem;
-  line-height: 1.85;
-  margin: 0 0 0.75rem;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 16px;
+  color: var(--quiz-text-soft);
+  line-height: 1.8;
+  margin: 0 0 12px;
 }
 
 .intro-meta {
-  font-size: 0.82rem;
-  color: var(--quiz-muted);
-  margin: 0 0 2.5rem;
-}
-
-/* -- Buttons -- */
-.btn-primary,
-.btn-secondary {
-  padding: 13px 32px;
-  font-size: 1rem;
-  cursor: pointer;
-  display: inline-block;
+  font-size: 13px;
+  color: #aaa09a;
+  margin: 0 0 36px;
 }
 
 .btn-primary {
-  background: var(--quiz-primary);
-  color: white;
+  display: inline-block;
+  background-color: var(--quiz-accent);
+  color: #fff;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 16px;
+  padding: 14px 40px;
   border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition:
+    background-color 0.2s,
+    transform 0.15s;
 }
 
 .btn-primary:hover {
-  background: #444441;
+  background-color: #5a4d45;
+  transform: translateY(-1px);
 }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--quiz-primary);
-  border: 1px solid var(--quiz-border);
-  margin-top: 2rem;
-}
+/* =============================================
+   QUIZ SCREEN
+   ============================================= */
 
-.btn-secondary:hover {
-  background: var(--quiz-hover);
-}
-
-/* -- Progress bar -- */
+/* Progress bar */
 .progress-wrap {
-  height: 3px;
-  background: var(--quiz-hover);
-  margin-bottom: 2.5rem;
+  height: 4px;
+  background-color: var(--quiz-border);
+  border-radius: 2px;
+  margin-bottom: 32px;
+  overflow: hidden;
 }
 
 .progress-bar {
   height: 100%;
-  background: var(--quiz-accent);
   width: 0%;
+  background-color: var(--quiz-accent);
+  border-radius: 2px;
   transition: width 0.4s ease;
 }
 
-/* -- QUIZ -- */
+/* Question */
 .question-meta {
-  font-size: 0.8rem;
-  color: var(--quiz-muted);
-  letter-spacing: 0.04em;
-  margin: 0 0 1rem;
+  font-size: 13px;
+  color: var(--quiz-text-soft);
+  margin: 0 0 16px;
+  letter-spacing: 0.03em;
 }
 
 .question-text {
-  font-size: 1.25rem;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: clamp(18px, 3vw, 22px);
   font-weight: 700;
-  line-height: 1.65;
-  margin: 0 0 2rem;
+  color: var(--quiz-text);
+  line-height: 1.5;
+  margin: 0 0 28px;
 }
 
+/* Options */
 .options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .option-btn {
-  text-align: left;
+  width: 100%;
+  background-color: var(--quiz-surface);
+  border: 1.5px solid var(--quiz-border);
+  border-radius: var(--quiz-radius);
   padding: 16px 20px;
-  background: white;
-  border: 1px solid var(--quiz-border);
-  font-size: 0.93rem;
-  line-height: 1.65;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 15px;
+  color: var(--quiz-text);
+  text-align: left;
   cursor: pointer;
-  color: var(--quiz-primary);
+  line-height: 1.6;
+  box-shadow: var(--quiz-shadow);
   transition:
-    background 0.15s,
-    border-color 0.15s;
+    border-color 0.15s,
+    background-color 0.15s,
+    transform 0.1s;
 }
 
 .option-btn:hover {
-  background: var(--quiz-hover);
-  border-color: var(--quiz-primary);
+  border-color: var(--quiz-accent);
+  background-color: #f5f0eb;
+  transform: translateX(4px);
 }
 
-/* -- Results -- */
+.option-btn:active {
+  transform: translateX(2px);
+}
+
+/* =============================================
+   RESULT SCREEN
+   ============================================= */
+#screen-result .quiz-container {
+  text-align: center;
+}
+
+/* Illustration — single result */
+.result-illustration {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+/* Illustration — dual result (two side by side) */
+.result-illustrations-dual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.result-illustrations-dual img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Result header */
 .result-type {
-  font-size: 1.75rem;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: clamp(22px, 4vw, 30px);
   font-weight: 700;
-  color: var(--quiz-accent);
-  margin: 0 0 0.5rem;
+  color: var(--quiz-text);
+  margin: 0 0 10px;
 }
 
 .result-tagline {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  margin: 0 0 2rem;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 16px;
+  color: var(--quiz-text-soft);
+  font-style: italic;
+  margin: 0 0 36px;
 }
 
+/* Result body — left-aligned sections */
 .result-body {
-  font-size: 0.93rem;
-  line-height: 1.9;
-  color: #5f5e5a;
+  text-align: left;
 }
 
-.result-body strong {
-  color: var(--quiz-primary);
+.result-section {
+  background-color: var(--quiz-surface);
+  border: 1.5px solid var(--quiz-border);
+  border-radius: var(--quiz-radius);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+  box-shadow: var(--quiz-shadow);
+}
+
+.result-section strong {
+  display: block;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--quiz-text-soft);
+  margin-bottom: 10px;
+}
+
+.result-section p {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 15px;
+  color: var(--quiz-text);
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* Dual result — named block header */
+.result-block {
+  margin-bottom: 32px;
+}
+
+.result-block-name {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--quiz-text);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--quiz-border);
+  text-align: left;
+}
+
+.dual-note {
+  font-size: 14px;
+  color: var(--quiz-text-soft);
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* -- PAIRINGS SECTION -- */
+.pairings-section {
+  margin-top: 28px;
+}
+
+.pairings-title {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--quiz-text);
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+.pairing-card {
+  background-color: var(--quiz-surface);
+  border: 1.5px solid var(--quiz-border);
+  border-left: 4px solid var(--quiz-accent);
+  border-radius: var(--quiz-radius);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--quiz-shadow);
+}
+
+.pairing-name {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--quiz-text);
+  margin: 0 0 8px;
+}
+
+.pairing-name em {
+  font-weight: 400;
+  color: var(--quiz-text-soft);
+}
+
+.pairing-desc {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 14px;
+  color: var(--quiz-text);
+  line-height: 1.8;
+  margin: 0 0 10px;
+}
+
+.pairing-tip {
+  font-size: 13px;
+  color: var(--quiz-text-soft);
+  background-color: #f5f0eb;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* -- RETRY BUTTON -- */
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--quiz-accent);
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 15px;
+  padding: 12px 32px;
+  border: 1.5px solid var(--quiz-accent);
+  border-radius: 100px;
+  cursor: pointer;
+  margin-top: 36px;
+  letter-spacing: 0.03em;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--quiz-accent);
+  color: #fff;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 480px) {
+  .quiz-container {
+    padding: 32px 16px 48px;
+  }
+
+  .option-btn {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+
+  .result-section {
+    padding: 16px 18px;
+  }
+
+  .pairing-card {
+    padding: 14px 16px;
+  }
+
+  .result-illustrations-dual img {
+    width: 80px;
+    height: 80px;
+  }
 }

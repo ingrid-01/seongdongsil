@@ -450,6 +450,7 @@ const questions = [
 
 const results = {
   A: {
+    illustration: "lsquiz-illustrations/activist.png",
     name: "행동형 (Activist)",
     tagline: "일단 질러보고 후회는 나중에",
     strengths:
@@ -479,6 +480,7 @@ const results = {
   },
 
   R: {
+    illustration: "lsquiz-illustrations/reflector.png",
     name: "성찰형 (Reflector)",
     tagline: "나는 다 보고 있었어",
     strengths:
@@ -508,6 +510,7 @@ const results = {
   },
 
   T: {
+    illustration: "lsquiz-illustrations/theorist.png",
     name: "이론형 (Theorist)",
     tagline: "근거 없는 말은 하지 않는다",
     strengths:
@@ -537,6 +540,7 @@ const results = {
   },
 
   P: {
+    illustration: "lsquiz-illustrations/pragmatist.png",
     name: "실용형 (Pragmatist)",
     tagline: "쓸모 없으면 내 시간 낭비야",
     strengths:
@@ -566,6 +570,7 @@ const results = {
   },
 
   ALL: {
+    illustration: "lsquiz-illustrations/all-rounder.png",
     name: "올라운더 (All-Rounder)",
     tagline: "상황 봐서 다 할 수 있음",
     strengths:
@@ -694,6 +699,27 @@ function buildProfileHtml(r) {
   );
 }
 
+function renderIllustration(topStyles) {
+  const wrap = document.getElementById("result-illustration-wrap");
+
+  if (topStyles.length === 1 || topStyles.length === 4) {
+    // single result or all-rounder: one image centred
+    const key = topStyles.length === 4 ? "ALL" : topStyles[0];
+    wrap.innerHTML =
+      '<img class="result-illustration" src="' +
+      results[key].illustration +
+      '" alt="" />';
+  } else {
+    // two or three tied styles: images side by side
+    const imgs = topStyles
+      .map(function (s) {
+        return '<img src"' + results[s].illustration + '" alt="" />';
+      })
+      .join("");
+    wrap.innerHTML = '<div class="result-illustration-dual">' + imgs + "</div>";
+  }
+}
+
 // -- CALCULATE + SHOW RESULT --
 function showResult() {
   const maxScore = Math.max(scores.A, scores.R, scores.T, scores.P);
@@ -751,6 +777,7 @@ function showResult() {
       '<p class="dual-note">두 유형의 페어링 유형이 모두 도움이 될 수 있어요 — 각 유형 결과를 따로 살펴보세요 😄</p>';
   }
 
+  renderIllustration(topStyles);
   document.getElementById("progress-bar").style.width = "100%";
   showScreen("screen-result");
 }
