@@ -752,31 +752,30 @@ function showResult() {
       .join(" + ");
     document.getElementById("result-type").textContent = names;
     document.getElementById("result-tagline").textContent =
-      "두 가지 학습 유형의 강점을 동시에 가지고 있어요!";
-    document.getElementById("result-body").innerHTML =
-      topStyles
-        .map(function (s) {
-          const r = results[s];
-          return (
-            '<div class="result-block">' +
-            '<p class="result-block-name">' +
-            r.name +
-            "</p>" +
-            '<div class="result-section"><strong>강점</strong><p>' +
-            r.strengths +
-            "</p></div>" +
-            '<div class="result-section"><strong>약점</strong><p>' +
-            r.weaknesses +
-            "</p></div>" +
-            '<div class="result-section"><strong>성장 팁</strong><p>' +
-            r.growth +
-            "</p></div>" +
-            buildPairingsHtml(r.pairings) +
-            "</div>"
-          );
-        })
-    .join("")
-  };
+      "여러 가지 학습 유형의 강점을 동시에 가지고 있어요!";
+    document.getElementById("result-body").innerHTML = topStyles
+      .map(function (s) {
+        const r = results[s];
+        return (
+          '<div class="result-block">' +
+          '<p class="result-block-name">' +
+          r.name +
+          "</p>" +
+          '<div class="result-section"><strong>강점</strong><p>' +
+          r.strengths +
+          "</p></div>" +
+          '<div class="result-section"><strong>약점</strong><p>' +
+          r.weaknesses +
+          "</p></div>" +
+          '<div class="result-section"><strong>성장 팁</strong><p>' +
+          r.growth +
+          "</p></div>" +
+          buildPairingsHtml(r.pairings) +
+          "</div>"
+        );
+      })
+      .join("");
+  }
 
   renderIllustration(topStyles);
   document.getElementById("progress-bar").style.width = "100%";
