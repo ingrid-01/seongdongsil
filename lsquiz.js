@@ -771,12 +771,12 @@ function showResult() {
             '<div class="result-section"><strong>성장 팁</strong><p>' +
             r.growth +
             "</p></div>" +
+            buildPairingsHtml(r.pairings) +
             "</div>"
           );
         })
-        .join("") +
-      '<p class="dual-note">두 유형의 페어링 유형이 모두 도움이 될 수 있어요 — 각 유형 결과를 따로 살펴보세요 😄</p>';
-  }
+    .join("")
+  };
 
   renderIllustration(topStyles);
   document.getElementById("progress-bar").style.width = "100%";
