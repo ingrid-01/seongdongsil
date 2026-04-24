@@ -454,7 +454,7 @@ const results = {
     name: "행동형 (Activist)",
     tagline: "일단 질러보고 후회는 나중에",
     strengths:
-      "새로운 경험이라면 일단 몸이 먼저 반응한다. 계획서보다 현장이 더 편하고, 브레인스토밍 자리에서 제일 먼저 입을 여는 사람도 너다. 지루함을 못 견디는 대신 분위기를 만드는 건 최고 — 어떤 모임이든 네가 있으면 일이 시작된다. 문제는 끝맺음인데, 그건 나중에 생각해도 되지 뭐.",
+      "새로운 경험이라면 일단 몸이 먼저 반응한다. 계획서보다 현장이 더 편하고, 브레인스토밍 자리에서 제일 먼저 입을 여는 사람도 너다. 지루함을 못 견디는 대신 분위기를 만드는 건 최고! 어떤 모임이든 네가 있으면 일이 시작된다. 문제는 끝맺음인데...그건 나중에 생각해도 되지 뭐.",
     weaknesses:
       "시작은 화려한데 마무리가 흐지부지되는 패턴, 본인도 알고 있다. 충분히 생각하기 전에 말이 먼저 나가서 가끔 수습이 필요하다. 혼자 깊게 파고드는 작업 — 논문 읽기, 자료 정리, 반복 복습 — 에서 에너지가 급격히 떨어진다. '왜 이렇게 느려' 라고 생각한 상대방이 사실 더 좋은 결과를 들고 온 경험, 한 번쯤 있지 않나?",
     growth:
@@ -713,10 +713,11 @@ function renderIllustration(topStyles) {
     // two or three tied styles: images side by side
     const imgs = topStyles
       .map(function (s) {
-        return '<img src"' + results[s].illustration + '" alt="" />';
+        return '<img src="' + results[s].illustration + '" alt="" />';
       })
       .join("");
-    wrap.innerHTML = '<div class="result-illustration-dual">' + imgs + "</div>";
+    wrap.innerHTML =
+      '<div class="result-illustrations-dual">' + imgs + "</div>";
   }
 }
 
