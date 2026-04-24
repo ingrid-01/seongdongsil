@@ -1,8 +1,7 @@
 // quiz.js - 심리테스트 logic
 
-// -- QUESTION --
+// -- QUESTIONS --
 // style: A = activist, R = reflector, T = theorist, P = pragmatist
-// TODO: Replace these 4 placeholder w the full 20 Qs
 
 const questions = [
   {
@@ -18,7 +17,7 @@ const questions = [
         style: "R",
       },
       {
-        text: "남은 시간 순삭 방지! 남은 5일을 어떻게 알차게 보낼지 시스템을 구축한다. 궁금했던 분야의 책도 좀 파볼까? ",
+        text: "남은 시간 순삭 방지! 남은 5일을 어떻게 알차게 보낼지 시스템을 구축한다. 궁금했던 분야의 책도 좀 파볼까?",
         style: "T",
       },
       {
@@ -29,7 +28,7 @@ const questions = [
   },
   {
     id: 2,
-    text: "새 소프트웨어 툴을 배워야 할 때: ",
+    text: "새 소프트웨어 툴을 배워야 할 때:",
     options: [
       {
         text: "일단 남들이 어떻게 쓰는지 관전한다. 오... 저렇게 하는 거군? 충분히 지켜본 뒤 조심스레 클릭.",
@@ -117,7 +116,7 @@ const questions = [
   },
   {
     id: 6,
-    text: "시험이 이틀 남았다! 나의 공부법은?:",
+    text: "시험이 이틀 남았다! 나의 공부법은?",
     options: [
       {
         text: "시간 실화?ㄷㄷ 오답 노트를 훑으며 내가 뭘 놓쳤는지 차분히 복기한다. 시간이 부족해 초조하다.",
@@ -139,7 +138,7 @@ const questions = [
   },
   {
     id: 7,
-    text: "스터디 모임에서 의견 충돌이 났을 때 운영진인 나는: ",
+    text: "스터디 모임에서 의견 충돌이 났을 때 운영진인 나는:",
     options: [
       {
         text: "자자, 싸우지 말고. 당장 적용 가능한 가장 현실적이고 빠른 합의점을 제시한다.",
@@ -161,7 +160,7 @@ const questions = [
   },
   {
     id: 8,
-    text: "점메추! :",
+    text: "점메추!",
     options: [
       {
         text: "오늘은 돈까스각! 내가 먹고 싶은 메뉴의 장점을 강력하게 어필하며 분위기를 주도한다.",
@@ -205,7 +204,7 @@ const questions = [
   },
   {
     id: 10,
-    text: "연인과 영화관에 갔을 때: ",
+    text: "연인과 영화관에 갔을 때:",
     options: [
       {
         text: "요즘 이게 대세라며? 스몰토크 소재로 쓰기 좋은 흥행 1위 영화를 본다.",
@@ -227,7 +226,7 @@ const questions = [
   },
   {
     id: 11,
-    text: "산책 중 앞에 가던 사람이 갑자기 쓰러졌다! 나는: ",
+    text: "산책 중 앞에 가던 사람이 갑자기 쓰러졌다! 나는:",
     options: [
       {
         text: "배운 대로 차근차근. 머릿속으로 CPR 순서를 1단계부터 4단계까지 차분히 복기하며 다가간다.",
@@ -249,7 +248,7 @@ const questions = [
   },
   {
     id: 12,
-    text: "상사가 한 번도 안 해본 어려운 업무를 맡겼다. 나는: ",
+    text: "상사가 한 번도 안 해본 어려운 업무를 맡겼다. 나는:",
     options: [
       {
         text: "잠시만요, 패닉 좀 할게요. 모르는 걸 어떻게 하나 싶어 일단 관련 데이터를 긁어모으며 마음을 진정시킨다.",
@@ -271,7 +270,7 @@ const questions = [
   },
   {
     id: 13,
-    text: "완벽했던 데이트 계획이 틀어지기 시작한다. 나는: ",
+    text: "완벽했던 데이트 계획이 틀어지기 시작한다. 나는:",
     options: [
       {
         text: "플랜 B 가동. 웨이팅이나 동선 낭비를 최소화할 수 있는 가장 효율적인 근처 대안을 빠르게 찾아낸다.",
@@ -296,7 +295,7 @@ const questions = [
     text: "내 전문 분야에 대해 친구가 틀린 주장을 우길 때:",
     options: [
       {
-        text: "왜 저렇게 생각하지? 저 친구의 논리 구조가 궁금해진다. 대답을 듣다 보면 저 친구를 보는 시각이 바뀔 것 같다..",
+        text: "왜 저렇게 생각하지? 저 친구의 논리 구조가 궁금해진다. 대답을 듣다 보면 저 친구를 보는 시각이 바뀔 것 같다.",
         style: "R",
       },
       {
@@ -403,7 +402,7 @@ const questions = [
   },
   {
     id: 19,
-    text: "초능력이 생겨 히어로 회사에 취업했는데 행정 업무만 한다면?:",
+    text: "초능력이 생겨 히어로 회사에 취업했는데 행정 업무만 한다면?",
     options: [
       {
         text: "오히려 좋아, 칼퇴 각. 주어진 서류 업무를 가장 빠르고 효율적으로 처리해 실력을 인정받는다.",
@@ -448,7 +447,6 @@ const questions = [
 ];
 
 // -- RESULT PROFILES --
-// TODO: Replace these 4 placeholder w the full 4 profiles
 
 const results = {
   A: {
@@ -456,16 +454,18 @@ const results = {
     tagline: "일단 질러보고 후회는 나중에",
     strengths:
       "새로운 경험이라면 일단 몸이 먼저 반응한다. 계획서보다 현장이 더 편하고, 브레인스토밍 자리에서 제일 먼저 입을 여는 사람도 너다. 지루함을 못 견디는 대신 분위기를 만드는 건 최고 — 어떤 모임이든 네가 있으면 일이 시작된다. 문제는 끝맺음인데, 그건 나중에 생각해도 되지 뭐.",
-    weaknesses: `시작은 화려한데 마무리가 흐지부지되는 패턴, 본인도 알고 있다. 충분히 생각하기 전에 말이 먼저 나가서 가끔 수습이 필요하다. 혼자 깊게 파고드는 작업 — 논문 읽기, 자료 정리, 반복 복습 — 에서 에너지가 급격히 떨어진다. "왜 이렇게 느려" 라고 생각한 상대방이 사실 더 좋은 결과를 들고 온 경험, 한 번쯤 있지 않나?`,
-    growth: `행동력은 이미 충분하다. 지금 필요한 건 멈추는 연습이다. 결정하기 전에 딱 하루만 더 두는 습관, 아이디어를 낸 직후 스스로에게 "그래서 어떻게?"를 한 번 더 묻는 것 — 그 작은 간격이 너의 에너지를 훨씬 더 멀리 데려다 준다`,
+    weaknesses:
+      "시작은 화려한데 마무리가 흐지부지되는 패턴, 본인도 알고 있다. 충분히 생각하기 전에 말이 먼저 나가서 가끔 수습이 필요하다. 혼자 깊게 파고드는 작업 — 논문 읽기, 자료 정리, 반복 복습 — 에서 에너지가 급격히 떨어진다. '왜 이렇게 느려' 라고 생각한 상대방이 사실 더 좋은 결과를 들고 온 경험, 한 번쯤 있지 않나?",
+    growth:
+      "행동력은 이미 충분하다. 지금 필요한 건 멈추는 연습이다. 결정하기 전에 딱 하루만 더 두는 습관, 아이디어를 낸 직후 스스로에게 '그래서 어떻게?'를 한 번 더 묻는 것 — 그 작은 간격이 너의 에너지를 훨씬 더 멀리 데려다 준다.",
     pairings: [
       {
         emoji: "🔵",
         name: "성찰형 (Reflector)",
         role: "속도를 늦춰주는 사람",
         description:
-          "행동형은 성찰형에게 본능적으로 답답함을 느낀다. 그런데 그 답답함이 정확히 배워야 할 지점이다. 성찰형은 행동형이 이미 지나쳐버린 것들을 아직 보고 있다 — 놓친 디테일, 고려하지 않은 관점, 나중에 문제가 될 변수들. 행동형은 일을 벌이는 속도로 성찰형이 수습하는 걸 보다 보면, 아, 저 단계가 필요했구나를 자연스럽게 배우게 된다.",
-        tip: "행동형이 아이디어를 내면 성찰형이  검토하는 구조로 나누면 최강의 조합이 된다.",
+          "행동형은 성찰형에게 본능적으로 답답함을 느낀다. 그런데 그 답답함이 정확히 배워야 할 지점이다. 성찰형은 행동형이 이미 지나쳐버린 것들을 아직 보고 있다 — 놓친 디테일, 고려하지 않은 관점, 나중에 문제가 될 변수들. 일을 벌이는 속도로 성찰형이 수습하는 걸 보다 보면, '아, 저 단계가 필요했구나'를 자연스럽게 배우게 된다.",
+        tip: "행동형이 아이디어를 내면 성찰형이 검토하는 구조로 나누면 최강의 조합이 된다.",
       },
       {
         emoji: "🟡",
@@ -484,94 +484,104 @@ const results = {
     strengths:
       "회의실에서 제일 조용한 사람이 너인데, 사실 제일 많이 생각하고 있는 사람도 너다. 결론을 내리기 전에 다양한 각도에서 상황을 살펴보고, 다른 사람들의 의견을 끝까지 듣고, 충분히 데이터가 쌓였을 때 움직인다. 그래서 네 판단은 대부분 틀리지 않는다. 단지 — 조금 늦게 도착할 뿐이다.",
     weaknesses:
-      "완벽한 타이밍을 기다리다가 기회가 지나간 적이 있다. 아마 한 번 이상.관찰하는 데 익숙해서 정작 본인 의견을 드러내는 걸 불편해하는 경향이 있다. 충분한 정보가 모일 때까지 결정을 미루다 보니 주변에서 우유부단하다는 인상을 받기도 한다. 분석하는 과정이 너무 재밌어서, 행동으로 전환하는 게 귀찮게 느껴질 때가 있다",
-    growth: `네 강점은 깊이다 — 그 깊이가 행동으로 이어질 때 가장 빛난다. "충분히 봤다"는 기준을 스스로 미리 정해두는 연습을 해보자. 정보 세 가지가 모이면 일단 시작한다 같은 자기만의 트리거. 완벽한 준비보다 적당한 준비 후의 실행이 더 많은 걸 가르쳐줄 때가 많다`,
+      "완벽한 타이밍을 기다리다가 기회가 지나간 적이 있다. 아마 한 번 이상. 관찰하는 데 익숙해서 정작 본인 의견을 드러내는 걸 불편해하는 경향이 있다. 충분한 정보가 모일 때까지 결정을 미루다 보니 주변에서 우유부단하다는 인상을 받기도 한다. 분석하는 과정이 너무 재밌어서, 행동으로 전환하는 게 귀찮게 느껴질 때가 있다.",
+    growth:
+      "네 강점은 깊이다 — 그 깊이가 행동으로 이어질 때 가장 빛난다. '충분히 봤다'는 기준을 스스로 미리 정해두는 연습을 해보자. 정보 세 가지가 모이면 일단 시작한다 같은 자기만의 트리거. 완벽한 준비보다 적당한 준비 후의 실행이 더 많은 걸 가르쳐줄 때가 많다.",
     pairings: [
       {
         emoji: "🔴",
         name: "행동형 (Activist)",
         role: "일단 뛰어들게 만드는 사람",
         description:
-          "성찰형의 가장 큰 성장 과제는 관찰에서 행동으로의 전환이다. 형동형 옆에 있으면 그 전환이 강제된다 — 좋은 의미로. 행동형은 성찰형이 아직 준비됐다고 느끼지 않을 때 이미 시작해버리고, 그 속에서 성찰형도 어쩔 수 없이 뛰어들게 된다. 그리고 해보면 이 정도 준비로도 됐네 를 배운다.",
-        tip: "성찰형은 관찰하고 정리한 인사이트를 행동형이 실행하는 구조 — 서로의 약점을 완벽하게 보완한다.",
+          "성찰형의 가장 큰 성장 과제는 관찰에서 행동으로의 전환이다. 행동형 옆에 있으면 그 전환이 강제된다 — 좋은 의미로. 행동형은 성찰형이 아직 준비됐다고 느끼지 않을 때 이미 시작해버리고, 그 속에서 성찰형도 어쩔 수 없이 뛰어들게 된다. 그리고 해보면 '이 정도 준비로도 됐네'를 배운다.",
+        tip: "성찰형이 관찰하고 정리한 인사이트를 행동형이 실행하는 구조 — 서로의 약점을 완벽하게 보완한다.",
       },
       {
         emoji: "🟢",
         name: "실용형 (Pragmatist)",
         role: "결론으로 데려가주는 사람",
-        description: `성찰형은 분석하는 과정 자체를 즐기다 보니 결론 내리기를 미루는 경향이 있다. 실용형은 "그래서 뭘 할 건데?"를 자연스럽게 던지는 사람이다. 처음엔 조금 단호하게 느껴질 수 있지만, 그 압력이 성찰형을 행동으로 밀어주는 역할을 한다.`,
+        description:
+          "성찰형은 분석하는 과정 자체를 즐기다 보니 결론 내리기를 미루는 경향이 있다. 실용형은 '그래서 뭘 할 건데?'를 자연스럽게 던지는 사람이다. 처음엔 조금 단호하게 느껴질 수 있지만, 그 압력이 성찰형을 행동으로 밀어주는 역할을 한다.",
         tip: null,
       },
     ],
   },
+
   T: {
     name: "이론형 (Theorist)",
     tagline: "근거 없는 말은 하지 않는다",
     strengths:
       "어떤 주제든 그냥 받아들이지 않는다. 왜? 가 먼저 나오고, 그 뒤에 어떤 원리로? 가 따라온다. 체계적으로 이해되지 않으면 앞으로 나아가기가 불편하고, 논리적으로 앞뒤가 맞지 않는 상황을 보면 지적하지 않고는 못 배긴다. 혼자 깊이 파고드는 작업에서 오히려 에너지가 생기는 희귀한 타입.",
-    weaknesses: `"이론상으로는 맞는데 현실에서는..."이라는 말을 자주 듣는다. 완벽하게 이해하고 시작하려다 보니 실행 속도가 느릴 수 있다. 직관이나 감정으로 움직이는 사람들의 판단을 가끔 신뢰하지 못한다. 내 논리가 완벽하다고 생각해서 다른 방식의 접근을 흘려듣는 경우가 생긴다`,
+    weaknesses:
+      "'이론상으로는 맞는데 현실에서는...'이라는 말을 자주 듣는다. 완벽하게 이해하고 시작하려다 보니 실행 속도가 느릴 수 있다. 직관이나 감정으로 움직이는 사람들의 판단을 가끔 신뢰하지 못한다. 내 논리가 완벽하다고 생각해서 다른 방식의 접근을 흘려듣는 경우가 생긴다.",
     growth:
-      "이해한 것을 직접 해보는 것 과 이론 사이의 간극이 생각보다 크다는 걸 인정하는 것부터 시작이다. 70%만 이해된 상태에서 일단 해보는 실험을 의도적으로 늘려보자. 틀리는 경험이 이론을 더 단단하게 만들어준다 — 이건 이론적으로도 맞는 말이다.",
+      "이해한 것을 직접 해보는 것과 이론 사이의 간극이 생각보다 크다는 걸 인정하는 것부터 시작이다. 70%만 이해된 상태에서 일단 해보는 실험을 의도적으로 늘려보자. 틀리는 경험이 이론을 더 단단하게 만들어준다 — 이건 이론적으로도 맞는 말이다.",
     pairings: [
       {
         emoji: "🟢",
         name: "실용형 (Pragmatist)",
         role: "현실로 데려오는 사람",
-        description: `이론형은 이론이 완성되면 끝이라고 생각하는 경향이 있다. 실용형은 "그래서 실제로 어떻게 쓸 건데?"를 집요하게 묻는다. 처음엔 깊이 없는 사람처럼 느껴질 수 있지만, 실용형은 옆에서 일하다 보면 이론이 현실에 부딪혔을 때 어떻게 변형되어야 하는지를 배운다. 이론과 실용 사이의 간극을 메우는 게 이론형은 진짜 성장 방향이다.`,
+        description:
+          "이론형은 이론이 완성되면 끝이라고 생각하는 경향이 있다. 실용형은 '그래서 실제로 어떻게 쓸 건데?'를 집요하게 묻는다. 처음엔 깊이 없는 사람처럼 느껴질 수 있지만, 실용형 옆에서 일하다 보면 이론이 현실에 부딪혔을 때 어떻게 변형되어야 하는지를 배운다. 이론과 실용 사이의 간극을 메우는 게 이론형의 진짜 성장 방향이다.",
         tip: "이론형은 왜(Why)와 어떤 원리로(How it works)를 제공하고, 실용형이 어떻게 쓸지(How to apply)를 결정하면 강력하다.",
       },
       {
         emoji: "🔴",
         name: "행동형 (Activist)",
         role: "완벽한 준비 없이 시작하게 만드는 사람",
-        description: `이론형에게 행동형은 조금 무모하게 보인다. 그런데 행동형을 관찰하다 보면 — 70%의 이해로도 시작할 수 있고, 나머지 30%는 하면서 채워진다 는 걸 경험으로 배운다. 이론가에게 가장 필요한 레슨이다.`,
+        description:
+          "이론형에게 행동형은 조금 무모하게 보인다. 그런데 행동형을 관찰하다 보면 — 70%의 이해로도 시작할 수 있고, 나머지 30%는 하면서 채워진다는 걸 경험으로 배운다. 이론가에게 가장 필요한 레슨이다.",
         tip: null,
       },
     ],
   },
+
   P: {
     name: "실용형 (Pragmatist)",
     tagline: "쓸모 없으면 내 시간 낭비야",
     strengths:
       "배움의 목적이 명확하다 — 이게 실제로 어디에 쓰이는가. 필요한 것만 빠르게 익히고, 현실에서 써먹을 수 없는 지식에는 자연스럽게 흥미를 잃는다. 회의에서는 실행 가능한 결론을 제일 먼저 찾고, 문제가 생기면 원인 분석보다 해결책을 먼저 떠올린다. 주변에서 일 잘한다는 말을 자주 듣는 유형이다.",
     weaknesses:
-      "효율을 우선시하다 보니 중요하지만 당장 쓸모 없어 보이는 것들 — 이론, 맥락, 큰 그림 — 을 놓칠 수 있다. 과정보다 결과에 집중하다 보니, 팀원들이 왜 그렇게 결정했는지 이해 못하는 경우가 생긴다. 창의적이거나 열린 탐색이 필요한 작업에서 답답함을 느낀다. 가끔 너무 빨리 결론 내리고 싶어서 더 나은 옵션을 검토하지 않고 넘어간다",
+      "효율을 우선시하다 보니 중요하지만 당장 쓸모 없어 보이는 것들 — 이론, 맥락, 큰 그림 — 을 놓칠 수 있다. 과정보다 결과에 집중하다 보니, 팀원들이 왜 그렇게 결정했는지 이해 못하는 경우가 생긴다. 창의적이거나 열린 탐색이 필요한 작업에서 답답함을 느낀다. 가끔 너무 빨리 결론 내리고 싶어서 더 나은 옵션을 검토하지 않고 넘어간다.",
     growth:
-      "지금 당장 쓸모없어 보이는 지식이 나중에 결정적인 순간에 연결되는 경우가 생각보다 많다. 한 달에 한 번은 이게 당장 필요한가? 라는 필터 없이 순수하게 흥미로운 것을 파고드는 시간을 의도적으로 가져보자. 실용주의자의 효율성에 약간의 탐색력이 더해지면 — 그게 진짜 강력해진다.",
+      "지금 당장 쓸모없어 보이는 지식이 나중에 결정적인 순간에 연결되는 경우가 생각보다 많다. 한 달에 한 번은 '이게 당장 필요한가?' 라는 필터 없이 순수하게 흥미로운 것을 파고드는 시간을 의도적으로 가져보자. 실용주의자의 효율성에 약간의 탐색력이 더해지면 — 그게 진짜 강력해진다.",
     pairings: [
       {
         emoji: "🟡",
         name: "이론형 (Theorist)",
         role: "큰 그림을 보여주는 사람",
-        description: `실용형은 당장 필요한 것만 빠르게 익히다 보니 맥락과 원리를 놓치는 경우가 생긴다. 이론형은 옆에 있으면 왜 이게 이렇게 작동하는지를 듣게 되는데, 처음엔 "그걸 왜 알아야 해?" 싶다가도 — 나중에 예상치 못한 문제가 생겼을 때 그 배경지식이 결정적인 역할을 한다는 걸 깨닫게 된다.`,
+        description:
+          "실용형은 당장 필요한 것만 빠르게 익히다 보니 맥락과 원리를 놓치는 경우가 생긴다. 이론형 옆에 있으면 왜 이게 이렇게 작동하는지를 듣게 되는데, 처음엔 '그걸 왜 알아야 해?' 싶다가도 — 나중에 예상치 못한 문제가 생겼을 때 그 배경지식이 결정적인 역할을 한다는 걸 깨닫게 된다.",
         tip: "실용형이 실행 속도를 내고 이론형이 방향을 잡아주면 — 빠르면서도 흔들리지 않는 팀이 된다.",
       },
       {
         emoji: "🔵",
         name: "성찰형 (Reflector)",
         role: "놓친 걸 짚어주는 사람",
-        description: `실용형은 결론을 빠르게 내리는 대신 검토 단계를 짧게 가져가는 경향이 있다. 성찰형은 그 빠른 결론에 "잠깐, 이건 고려했어?" 를 조용히 던지는 사람이다. 답답하게 느껴질 수 있지만, 그 질문 덕분에 실용형이 나중에 수습해야 할 상황을 미리 막는 경우가 많다.`,
+        description:
+          "실용형은 결론을 빠르게 내리는 대신 검토 단계를 짧게 가져가는 경향이 있다. 성찰형은 그 빠른 결론에 '잠깐, 이건 고려했어?'를 조용히 던지는 사람이다. 답답하게 느껴질 수 있지만, 그 질문 덕분에 실용형이 나중에 수습해야 할 상황을 미리 막는 경우가 많다.",
         tip: null,
       },
     ],
   },
+
   ALL: {
     name: "올라운더 (All-Rounder)",
     tagline: "상황 봐서 다 할 수 있음",
     strengths:
       "네 가지 스타일이 고르게 나왔다는 건, 상황에 따라 다른 방식으로 학습하고 반응할 수 있다는 의미다. 계획이 필요하면 계획을 세우고, 직접 해봐야 할 때는 뛰어들 수 있고, 이론이 필요하면 파고들고, 효율이 필요할 땐 핵심만 뽑아낼 수 있다. 어떤 팀에 들어가도 유연하게 적응하는 타입.",
     weaknesses:
-      "유연한 게 강점이지만, 반대로 말하면 나는 이렇게 배운다는 자기만의 방식이 덜 뚜렷할 수 있다. 어떤 방식이든 다 될 것 같아서, 오히려 한 방식을 깊게 밀어붙이는 집중력이 부족해질 때가 있다. 상황마다 다르게 반응하다 보니, 주변에서 내 스타일을 예측하기 어렵다고 느낄 수 있다",
+      "유연한 게 강점이지만, 반대로 말하면 나는 이렇게 배운다는 자기만의 방식이 덜 뚜렷할 수 있다. 어떤 방식이든 다 될 것 같아서, 오히려 한 방식을 깊게 밀어붙이는 집중력이 부족해질 때가 있다. 상황마다 다르게 반응하다 보니, 주변에서 내 스타일을 예측하기 어렵다고 느낄 수 있다.",
     growth:
       "멀티플레이어의 진짜 강점은 언제 어떤 모드로 전환해야 하는지 아는 것이다. 지금보다 한 단계 더 나아가려면 — 이 네 가지 스타일 중 어떤 상황에서 어떤 걸 의도적으로 선택하는지 스스로 인식해보자. 유연성에 의도가 더해지면 어떤 환경에서도 흔들리지 않는 학습자가 된다.",
     pairings: [
       {
         emoji: "🌈",
-        name: null,
-        role: "모든 스타일과 잘 어울리는 사람",
+        name: "모든 유형",
+        role: "모든 스타일과 배울 수 있는 사람",
         description:
-          "All-Rounder는 특정 유형이 없는 만큼, 어떤 유형과도 배울 수 있는 위치에 있다. 오히려 이들에게 필요한 건 페어링보다 의도적인 선택 — 지금 이 프로젝트에서, 이 상황에서, 나는 어떤 모드로 배울 것인가를 스스로 정하는 것이다.",
-        tip: "All-Rounder는 팀 안에서 통역사 역할을 자연스럽게 하게 된다 — 행동형의 에너지를 성찰형에게, 이론형의 논리를 실용형에게 전달하는 사람.",
+          "올라운더에게 필요한 건 특정 페어링보다 의도적인 선택이다 — 지금 이 프로젝트에서, 이 상황에서, 나는 어떤 모드로 배울 것인가를 스스로 정하는 것. 팀 안에서 자연스럽게 통역사 역할을 하게 된다 — 행동형의 에너지를 성찰형에게, 이론형의 논리를 실용형에게 전달하는 사람.",
+        tip: null,
       },
     ],
   },
@@ -583,7 +593,7 @@ const scores = { A: 0, R: 0, T: 0, P: 0 };
 
 // -- SCREEN SWITCHING --
 function showScreen(id) {
-  document.querySelectorAll(".screen").forEach((s) => {
+  document.querySelectorAll(".screen").forEach(function (s) {
     s.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
@@ -594,16 +604,16 @@ function renderQuestion() {
   const q = questions[currentQ];
   const total = questions.length;
 
-  //PROGRESS BAR
+  // PROGRESS BAR
   const pct = (currentQ / total) * 100;
-  document.getElementById("progress-bar").style.width = `${pct}%`;
+  document.getElementById("progress-bar").style.width = pct + "%";
 
   // QUESTION NUMBER + TEXT
   document.getElementById("question-meta").textContent =
-    `질문 ${currentQ + 1} / ${total}`;
+    "질문 " + (currentQ + 1) + " / " + total;
   document.getElementById("question-text").textContent = q.text;
 
-  // ANSWER OPTIONS - built from data, not hardcoded HTML
+  // ANSWER OPTIONS — built from data, not hardcoded HTML
   const optionsEl = document.getElementById("options");
   optionsEl.innerHTML = "";
 
@@ -618,59 +628,96 @@ function renderQuestion() {
   });
 }
 
-// -- Handle Answer --
+// -- HANDLE ANSWER --
 function handleAnswer(style) {
-  scores[style]++; // add 1 to that style's tally
-  currentQ++; // move to next question
+  scores[style]++;
+  currentQ++;
 
   if (currentQ < questions.length) {
-    renderQuestion(); // show next question
+    renderQuestion();
   } else {
     showResult();
   }
 }
 
-// -- Calculate + show Result --
+// -- BUILD PAIRINGS HTML --
+// BUG FIX: parameter is `pairings` (the array), so use it directly — not `r.pairings`
+function buildPairingsHtml(pairings) {
+  if (!pairings || pairings.length === 0) return "";
+
+  const pairingItems = pairings
+    .map(function (p) {
+      const tipHtml = p.tip
+        ? '<p class="pairing-tip">💡 같이 일할 때: ' + p.tip + "</p>"
+        : "";
+
+      return (
+        '<div class="pairing-card">' +
+        '<p class="pairing-name">' +
+        p.emoji +
+        " " +
+        p.name +
+        " — <em>" +
+        p.role +
+        "</em></p>" +
+        '<p class="pairing-desc">' +
+        p.description +
+        "</p>" +
+        tipHtml +
+        "</div>"
+      );
+    })
+    .join("");
+
+  return (
+    '<div class="pairings-section">' +
+    '<h3 class="pairings-title">🤝 이런 유형이랑 같이 공부해봐요</h3>' +
+    pairingItems +
+    "</div>"
+  );
+}
+
+// -- BUILD PROFILE HTML --
+// Reusable helper so all three showResult() branches stay clean and consistent
+function buildProfileHtml(r) {
+  return (
+    '<div class="result-section"><strong>강점</strong><p>' +
+    r.strengths +
+    "</p></div>" +
+    '<div class="result-section"><strong>약점</strong><p>' +
+    r.weaknesses +
+    "</p></div>" +
+    '<div class="result-section"><strong>성장 팁</strong><p>' +
+    r.growth +
+    "</p></div>" +
+    buildPairingsHtml(r.pairings) // BUG FIX: called here, passing r.pairings
+  );
+}
+
+// -- CALCULATE + SHOW RESULT --
 function showResult() {
-  // Find the max score
   const maxScore = Math.max(scores.A, scores.R, scores.T, scores.P);
 
-  // Find all styles tied at the top (handles 1 or 2 dominant styles)
   const topStyles = Object.keys(scores).filter(function (s) {
     return scores[s] === maxScore;
   });
 
+  // ALL FOUR tied — true all-rounder
   if (topStyles.length === 4) {
     const r = results.ALL;
     document.getElementById("result-type").textContent = r.name;
     document.getElementById("result-tagline").textContent = r.tagline;
-    document.getElementById("result-body").innerHTML =
-      "<strong>강점:</strong> " +
-      r.strengths +
-      "<br><br>" +
-      "<strong>약점:</strong> " +
-      r.weaknesses +
-      "<br><br>" +
-      "<strong>올라운더가 되기 위한 팁:</strong> " +
-      r.growth +
-      "<br><br>";
+    document.getElementById("result-body").innerHTML = buildProfileHtml(r);
+
+    // ONE dominant style
   } else if (topStyles.length === 1) {
-    // Single dominant style
     const r = results[topStyles[0]];
     document.getElementById("result-type").textContent = r.name;
     document.getElementById("result-tagline").textContent = r.tagline;
-    document.getElementById("result-body").innerHTML =
-      "<strong>강점:</strong> " +
-      r.strengths +
-      "<br><br>" +
-      "<strong>약점:</strong> " +
-      r.weaknesses +
-      "<br><br>" +
-      "<strong>올라운더가 되기 위한 팁:</strong> " +
-      r.growth +
-      "<br><br>";
+    document.getElementById("result-body").innerHTML = buildProfileHtml(r);
+
+    // TWO OR THREE styles tied — show all profiles, skip pairings to avoid info overload
   } else {
-    // multiple dominant styles
     const names = topStyles
       .map(function (s) {
         return results[s].name;
@@ -678,62 +725,37 @@ function showResult() {
       .join(" + ");
     document.getElementById("result-type").textContent = names;
     document.getElementById("result-tagline").textContent =
-      "당신은 여러 학습 유형이 특성을 가지고 있습니다!";
-    document.getElementById("result-body").innerHTML = topStyles
-      .map(function (s) {
-        return (
-          "<strong>" +
-          results[s].name +
-          ":</strong><br>" +
-          "<strong>강점:</strong> " +
-          results[s].strengths +
-          "<br><br>" +
-          "<strong>약점:</strong> " +
-          results[s].weaknesses +
-          "<br><br>" +
-          "<strong>올라운더가 되기 위한 팁:</strong> " +
-          results[s].growth +
-          "<br><br>"
-        );
-      })
-      .join("");
+      "두 가지 학습 유형의 강점을 동시에 가지고 있어요!";
+    document.getElementById("result-body").innerHTML =
+      topStyles
+        .map(function (s) {
+          const r = results[s];
+          return (
+            '<div class="result-block">' +
+            '<p class="result-block-name">' +
+            r.name +
+            "</p>" +
+            '<div class="result-section"><strong>강점</strong><p>' +
+            r.strengths +
+            "</p></div>" +
+            '<div class="result-section"><strong>약점</strong><p>' +
+            r.weaknesses +
+            "</p></div>" +
+            '<div class="result-section"><strong>성장 팁</strong><p>' +
+            r.growth +
+            "</p></div>" +
+            "</div>"
+          );
+        })
+        .join("") +
+      '<p class="dual-note">두 유형의 페어링 유형이 모두 도움이 될 수 있어요 — 각 유형 결과를 따로 살펴보세요 😄</p>';
   }
 
-  // Progress bar to 100%
   document.getElementById("progress-bar").style.width = "100%";
-
   showScreen("screen-result");
 }
 
-function buildPairingsHtml(pairings) {
-  // if no pairings defined, return empty string
-  if (!r.pairings || r.pairings.length === 0) return "";
-
-  const pairingItems = r.pairings
-    .map(function (p) {
-      const tipHTML = p.tip
-        ? `<p class="pairing-tip">💡 같이 일할 때: ${p.tip}</p>`
-        : "";
-
-      return `
-        <div class="pairing-card">
-          <h4 class="pairing-name">${p.emoji} ${p.name} - <em>${p.role}</em></h4>
-          <p class="pairing-desc">${p.description}</p>
-          ${tipHTML}
-        </div>
-      `;
-    })
-    .join("");
-
-  return `
-    <div class="pairings-section">
-      <h3 class="pairings-title">🤝 이런 유형이랑 같이 공부해봐요</h3>
-      ${pairingItems}
-    </div>
-  `;
-}
-
-// -- Event Listeners --
+// -- EVENT LISTENERS --
 document.getElementById("btn-start").addEventListener("click", function () {
   showScreen("screen-quiz");
   renderQuestion();
