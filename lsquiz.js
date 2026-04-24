@@ -705,6 +705,34 @@ function showResult() {
   showScreen("screen-result");
 }
 
+function buildPairingsHtml(pairings) {
+  // if no pairings defined, return empty string
+  if (!r.pairings || r.pairings.length === 0) return "";
+
+  const pairingItems = r.pairings
+    .map(function (p) {
+      const tipHTML = p.tip
+        ? `<p class="pairing-tip">💡 같이 일할 때: ${p.tip}</p>`
+        : "";
+
+      return `
+        <div class="pairing-card">
+          <h4 class="pairing-name">${p.emoji} ${p.name} - <em>${p.role}</em></h4>
+          <p class="pairing-desc">${p.description}</p>
+          ${tipHTML}
+        </div>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="pairings-section">
+      <h3 class="pairings-title">🤝 이런 유형이랑 같이 공부해봐요</h3>
+      ${pairingItems}
+    </div>
+  `;
+}
+
 // -- Event Listeners --
 document.getElementById("btn-start").addEventListener("click", function () {
   showScreen("screen-quiz");
