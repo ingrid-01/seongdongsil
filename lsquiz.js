@@ -629,10 +629,32 @@ function renderQuestion() {
     btn.className = "option-btn";
     btn.textContent = opt.text;
     btn.addEventListener("click", function () {
-      handleAnswer(opt.style);
+      selectOption(opt.style, btn);
     });
+
+    // restore previously selected option if coming back
+    if (Answers[currentQ] === opt.style) {
+      btn.classList.add("selected");
+    }
+
     optionsEl.appendChild(btn);
   });
+
+  // restore pending answer highlight if they selected but didn't confirm
+  if (pendingAnswer !== null) {
+    // pendingAnswer doesn't apply when nagvigating back, so clear it
+    pendingAnswer = null;
+  }
+
+  // manage nav button states
+  const btnPrev = document.getElementById("btn-prev");
+  const btnNext = document.getElementById("btn-next");
+
+  // hide 이전 on first question
+  btnPrev.style.visibility = currentQ === 0 ? "hidden" : "visible";
+
+  // 다음 only avtive if this question has been answered before OR an option is selected
+  btnNext.disabled = answer[currentQ] === undefined;
 }
 
 // -- SELECT OPTION (click on an answer) --
@@ -682,8 +704,6 @@ function goPrev() {
   pendingAnswer = null;
   renderQuestion();
 }
-
-
 
 // -- BUILD PAIRINGS HTML --
 // BUG FIX: parameter is `pairings` (the array), so use it directly — not `r.pairings`
