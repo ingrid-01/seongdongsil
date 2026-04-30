@@ -595,6 +595,8 @@ const results = {
 // -- STATE --
 let currentQ = 0;
 const scores = { A: 0, R: 0, T: 0, P: 0 };
+const answers = []; // stores the style picked for each question
+let pendingAnswer = null; // the option the user has clicked byt not yet confirmed
 
 // -- SCREEN SWITCHING --
 function showScreen(id) {
