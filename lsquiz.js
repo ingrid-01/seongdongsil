@@ -854,6 +854,16 @@ document.getElementById("btn-retry").addEventListener("click", function () {
   scores.R = 0;
   scores.T = 0;
   scores.P = 0;
+  answers.length = 0; // clear the answers array
+  pendingAnswer = null;
   document.getElementById("progress-bar").style.width = "0%";
   showScreen("screen-intro");
+});
+
+document.getElementById("btn-next").addEventListener("click", function () {
+  goNext();
+});
+
+document.getElementById("btn-prev").addEventListener("click", function () {
+  goPrev();
 });
