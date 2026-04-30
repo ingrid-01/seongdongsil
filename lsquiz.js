@@ -635,17 +635,55 @@ function renderQuestion() {
   });
 }
 
-// -- HANDLE ANSWER --
-function handleAnswer(style) {
-  scores[style]++;
+// -- SELECT OPTION (click on an answer) --
+function selectOption(style, clickBtn) {
+  // remove highlight from all buttons
+  document.querySelectorAll(".option-btn").forEach(function (btn) {
+    btn.classList.remove("selected");
+  });
+  // highlight to clicked button
+  clickBtn.classList.add("selected");
+
+  // store what they picked (not commited yet)
+  pendingAnswer = style;
+
+  // activate the 다음 button
+  document.getElementById("btn-next").disabled = false;
+}
+
+// -- GO NEXT (confirm selection and advance) --
+function goNext() {
+  if (pendingAnswer === null) return;
+
+  // if they're changing a previous answer, undo th eold score first
+  if (answers[currentQ] !== undefined) {
+    scores[answers[currentQ]]--;
+  }
+
+  // commit the new answer
+  answers[currentQ] = pendingAnswer;
+  scores[pendingAnswer]++;
+  pendingAnswer = null;
+
   currentQ++;
 
-  if (currentQ < questions.length) {
+  if (currentQ < questions.lenght) {
     renderQuestion();
   } else {
     showResult();
   }
 }
+
+// -- GO PREV (step back one question) --
+function goPrev() {
+  if (currentQ === 0) return;
+
+  currentQ--;
+  pendingAnswer = null;
+  renderQuestion();
+}
+
+
 
 // -- BUILD PAIRINGS HTML --
 // BUG FIX: parameter is `pairings` (the array), so use it directly — not `r.pairings`
