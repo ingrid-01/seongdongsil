@@ -55,6 +55,11 @@
   text-align: center;
 }
 
+.logo {
+  display: block;
+  margin-bottom: 24px;
+}
+
 .intro-illustration {
   width: 240px;
   height: 240px;
