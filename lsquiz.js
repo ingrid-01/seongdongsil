@@ -633,7 +633,7 @@ function renderQuestion() {
     });
 
     // restore previously selected option if coming back
-    if (Answers[currentQ] === opt.style) {
+    if (answers[currentQ] === opt.style) {
       btn.classList.add("selected");
     }
 
@@ -654,7 +654,7 @@ function renderQuestion() {
   btnPrev.style.visibility = currentQ === 0 ? "hidden" : "visible";
 
   // 다음 only avtive if this question has been answered before OR an option is selected
-  btnNext.disabled = answer[currentQ] === undefined;
+  btnNext.disabled = answers[currentQ] === undefined;
 }
 
 // -- SELECT OPTION (click on an answer) --
@@ -675,9 +675,19 @@ function selectOption(style, clickBtn) {
 
 // -- GO NEXT (confirm selection and advance) --
 function goNext() {
-  if (pendingAnswer === null) return;
+  if (pendingAnswer === null) {
+    if (answers[currentQ] !== undefined) {
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+    return;
+  }
 
-  // if they're changing a previous answer, undo th eold score first
+  // undo old score if changing a previous answer
   if (answers[currentQ] !== undefined) {
     scores[answers[currentQ]]--;
   }
@@ -689,7 +699,7 @@ function goNext() {
 
   currentQ++;
 
-  if (currentQ < questions.lenght) {
+  if (currentQ < questions.length) {
     renderQuestion();
   } else {
     showResult();
