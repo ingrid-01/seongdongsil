@@ -850,6 +850,15 @@ function showResult() {
   renderIllustration(topStyles);
   document.getElementById("progress-bar").style.width = "100%";
   showScreen("screen-result");
+
+  const sections = document.querySelectorAll(
+    "#result-body .result-section, #result-body .pairings-section, #result-body .result-block",
+  );
+
+  sections.forEach(function (el, index) {
+    el.classList.add("Result-animate");
+    el.style.animationDelay = index * 0.15 + "s";
+  });
 }
 
 // -- EVENT LISTENERS --

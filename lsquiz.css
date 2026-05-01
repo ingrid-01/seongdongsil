@@ -511,3 +511,17 @@
   opacity: 0;
   animation: fadeSlideUp 0.5s ease forwards;
 }
+
+.result-type,
+.result-tagline {
+  opacity: 0;
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+.result-type {
+  animation-delay: 0s;
+}
+
+.result-tagline {
+  animation-delay: 0.1s;
+}
