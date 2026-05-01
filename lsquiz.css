@@ -57,7 +57,7 @@
 
 .logo {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 100px;
 }
 
 .intro-illustration {
@@ -99,6 +99,7 @@
   font-size: 13px;
   color: #aaa09a;
   margin: 0 0 36px;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .btn-primary {
