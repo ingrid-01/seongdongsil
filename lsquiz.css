@@ -421,19 +421,6 @@
   position: relative;
 }
 
-/* Small dot indicator on the left edge */
-.option-btn.selected::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 60%;
-  background-color: var(--quiz-accent);
-  border-radius: 0 2px 2px 0;
-}
-
 /* -- NAV BUTTON ROW -- */
 .nav-buttons {
   display: flex;
