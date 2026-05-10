@@ -86,9 +86,7 @@
 }
 
 .intro-desc {
-  font-family:
-    "Nanum Gothic",
-    sans serif;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 16px;
   color: var(--quiz-text-soft);
   line-height: 1.8;
@@ -174,9 +172,7 @@
   border: 1.5px solid var(--quiz-border);
   border-radius: var(--quiz-radius);
   padding: 16px 20px;
-  font-family:
-    "Nanum Gothic",
-    sans serif;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 15px;
   color: var(--quiz-text);
   text-align: left;
@@ -261,9 +257,7 @@
 
 .result-section strong {
   display: block;
-  font-family:
-    "Nanum Gothic",
-    sans serif;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -272,9 +266,7 @@
 }
 
 .result-section p {
-  font-family:
-    "Nanum Gothic",
-    sans serif;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 15px;
   color: var(--quiz-text);
   line-height: 1.85;
@@ -343,9 +335,7 @@
 }
 
 .pairing-desc {
-  font-family:
-    "Nanum Gothic",
-    sans serif;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 14px;
   color: var(--quiz-text);
   line-height: 1.8;
@@ -418,7 +408,6 @@
 .option-btn.selected {
   border-color: var(--quiz-accent);
   background-color: #f5f0eb;
-  position: relative;
 }
 
 /* -- NAV BUTTON ROW -- */
@@ -465,7 +454,7 @@
   border-radius: 100px;
   cursor: pointer;
   transition:
-    backgorund-color 0.2s,
+    background-color 0.2s,
     opacity 0.2s;
 }
 
