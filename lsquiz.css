@@ -336,7 +336,7 @@
 .pairing-illust-label {
   font-family: "Jua", sans-serif;
   font-size: 13px;
-  color: var(--quix-text-soft);
+  color: var(--quiz-text-soft);
   text-align: center;
   margin: 0;
 }
@@ -373,7 +373,7 @@
 
 .pairing-tip {
   font-size: 12px;
-  color: var(--quiz-text0soft);
+  color: var(--quiz-text-soft);
   background-color: #f5f0eb;
   border-radius: 6px;
   padding: 8px 12px;

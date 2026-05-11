@@ -889,7 +889,7 @@ function showResult() {
   );
 
   sections.forEach(function (el, index) {
-    el.classList.add("Result-animate");
+    el.classList.add("result-animate");
     el.style.animationDelay = index * 0.15 + "s";
   });
 }
