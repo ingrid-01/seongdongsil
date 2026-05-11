@@ -307,49 +307,94 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--quiz-text);
-  margin: 0 0 16px;
+  margin: 0 0 20px;
   text-align: left;
+}
+
+/* Illustration row - side by side */
+.pairing-illustrations {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.pairing-illust-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.pairing-illust-wrap img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.pairing-illust-label {
+  font-family: "Jua", sans-serif;
+  font-size: 13px;
+  color: var(--quix-text-soft);
+  text-align: center;
+  margin: 0;
+}
+
+/* Cards grid - side by side matching the illustrations */
+.pairing-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .pairing-card {
   background-color: var(--quiz-surface);
   border: 1.5px solid var(--quiz-border);
-  border-left: 4px solid var(--quiz-accent);
   border-radius: var(--quiz-radius);
-  padding: 18px 20px;
-  margin-bottom: 12px;
+  padding: 16px;
   box-shadow: var(--quiz-shadow);
 }
 
-.pairing-name {
+.pairing-role {
   font-family: "Jua", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--quiz-text);
-  margin: 0 0 8px;
-}
-
-.pairing-name em {
-  font-weight: 400;
+  font-size: 13px;
   color: var(--quiz-text-soft);
+  margin: 0 0 8px;
 }
 
 .pairing-desc {
   font-family: "Nanum Gothic", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--quiz-text);
-  line-height: 1.8;
-  margin: 0 0 10px;
+  line-height: 1.75;
+  margin: 0 0 8px;
 }
 
 .pairing-tip {
-  font-size: 13px;
-  color: var(--quiz-text-soft);
+  font-size: 12px;
+  color: var(--quiz-text0soft);
   background-color: #f5f0eb;
   border-radius: 6px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   margin: 0;
   line-height: 1.6;
+}
+
+/* Stack to single column on mobile */
+@media (max-width: 480px) {
+  .pairing-illustrations {
+    gap: 16px;
+  }
+
+  .pairing-illust-wrap img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .pairing-cards-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* -- RETRY BUTTON -- */

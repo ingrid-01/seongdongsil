@@ -462,6 +462,7 @@ const results = {
     pairings: [
       {
         emoji: "🔵",
+        styleKey: "R",
         name: "성찰형 (Reflector)",
         role: "속도를 늦춰주는 사람",
         description:
@@ -470,6 +471,7 @@ const results = {
       },
       {
         emoji: "🟡",
+        styleKey: "T",
         name: "이론형 (Theorist)",
         role: "왜 그게 작동하는지 알려주는 사람",
         description:
@@ -492,6 +494,7 @@ const results = {
     pairings: [
       {
         emoji: "🔴",
+        styleKey: "A",
         name: "행동형 (Activist)",
         role: "일단 뛰어들게 만드는 사람",
         description:
@@ -500,6 +503,7 @@ const results = {
       },
       {
         emoji: "🟢",
+        styleKey: "P",
         name: "실용형 (Pragmatist)",
         role: "결론으로 데려가주는 사람",
         description:
@@ -522,6 +526,7 @@ const results = {
     pairings: [
       {
         emoji: "🟢",
+        styleKey: "P",
         name: "실용형 (Pragmatist)",
         role: "현실로 데려오는 사람",
         description:
@@ -530,6 +535,7 @@ const results = {
       },
       {
         emoji: "🔴",
+        styleKey: "A",
         name: "행동형 (Activist)",
         role: "완벽한 준비 없이 시작하게 만드는 사람",
         description:
@@ -552,6 +558,7 @@ const results = {
     pairings: [
       {
         emoji: "🟡",
+        styleKey: "T",
         name: "이론형 (Theorist)",
         role: "큰 그림을 보여주는 사람",
         description:
@@ -560,6 +567,7 @@ const results = {
       },
       {
         emoji: "🔵",
+        styleKey: "R",
         name: "성찰형 (Reflector)",
         role: "놓친 걸 짚어주는 사람",
         description:
@@ -720,7 +728,31 @@ function goPrev() {
 function buildPairingsHtml(pairings) {
   if (!pairings || pairings.length === 0) return "";
 
-  const pairingItems = pairings
+  // Build illustration row (only if pairings have styleKey)
+  const illustrationsHtml = pairings
+    .filter(function (p) {
+      return p.styleKey;
+    })
+    .map(function (p) {
+      return (
+        '<div class="pairing-illust-wrap">' +
+        '<img src="' +
+        results[p.styleKey].illustration +
+        '" alt="' +
+        p.name +
+        '" />' +
+        '<p class="pairing-illust-label">' +
+        p.emoji +
+        " " +
+        p.name +
+        "</p>" +
+        "</div>"
+      );
+    })
+    .join("");
+
+  // Build card row
+  const cardsHtml = pairings
     .map(function (p) {
       const tipHtml = p.tip
         ? '<p class="pairing-tip">💡 같이 일할 때: ' + p.tip + "</p>"
@@ -728,11 +760,7 @@ function buildPairingsHtml(pairings) {
 
       return (
         '<div class="pairing-card">' +
-        '<p class="pairing-name">' +
-        p.emoji +
-        " " +
-        p.name +
-        " — <em>" +
+        '<p class="pairing-role"><em>' +
         p.role +
         "</em></p>" +
         '<p class="pairing-desc">' +
@@ -747,7 +775,12 @@ function buildPairingsHtml(pairings) {
   return (
     '<div class="pairings-section">' +
     '<h3 class="pairings-title">🤝 이런 유형이랑 같이 공부해봐요</h3>' +
-    pairingItems +
+    '<div class="pairing-illustrations">' +
+    illustrationsHtml +
+    "</div>" +
+    '<div class="pairing-cards-grid">' +
+    cardsHtml +
+    "</div>" +
     "</div>"
   );
 }
