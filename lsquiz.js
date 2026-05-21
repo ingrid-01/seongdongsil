@@ -643,6 +643,17 @@ function renderQuestion() {
   const pct = (currentQ / total) * 100;
   document.getElementById("progress-bar").style.width = pct + "%";
 
+  // QUESTION ILLUSTRATION
+  const illustrationWrap = document.getElementById("question-illustration");
+  illustrationWrap.innerHTML = "";
+  if (q.illustration) {
+    const img = document.createElement("img");
+    img.src = q.illustration;
+    img.alt = "";
+    img.className = "question-illustration-img";
+    illustrationWrap.appendChild(img);
+  }
+
   // QUESTION NUMBER + TEXT
   document.getElementById("question-meta").textContent =
     "질문 " + (currentQ + 1) + " / " + total;
