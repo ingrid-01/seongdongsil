@@ -196,6 +196,45 @@
 }
 
 /* =============================================
+   QUESTION ILLUSTRATION
+   ============================================= */
+
+/* Centre the illustration and question text */
+#question-illustration {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question-illustration-img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* Centre the question number and text */
+.question-meta {
+  text-align: center;
+}
+
+.question-text {
+  text-align: center;
+}
+
+/* Options stay left-aligned for readability */
+.option-btn {
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .question-illustration-img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* =============================================
    RESULT SCREEN
    ============================================= */
 #screen-result .quiz-container {
