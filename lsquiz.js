@@ -6,6 +6,7 @@
 const questions = [
   {
     id: 1,
+    illustration: "q-illustrations/q1.png",
     text: "1. 일주일 휴가 중 3일째... 나는:",
     options: [
       {
@@ -28,6 +29,7 @@ const questions = [
   },
   {
     id: 2,
+    illustration: "q-illustrations/q2.png",
     text: "2. 새 소프트웨어 툴을 배워야 할 때:",
     options: [
       {
@@ -50,6 +52,7 @@ const questions = [
   },
   {
     id: 3,
+    illustration: "q-illustrations/q3.png",
     text: "3. 친구들이랑 2박3일 기차여행! 나는:",
     options: [
       {
@@ -72,6 +75,7 @@ const questions = [
   },
   {
     id: 4,
+    illustration: "q-illustrations/q4.png",
     text: "4. 새 프로젝트의 첫 회의 시간:",
     options: [
       {
@@ -94,6 +98,7 @@ const questions = [
   },
   {
     id: 5,
+    illustration: "q-illustrations/q5.png",
     text: "5. 직접 조립해야 하는 이케아 책장이 왔다! 나는:",
     options: [
       {
@@ -116,6 +121,7 @@ const questions = [
   },
   {
     id: 6,
+    illustration: "q-illustrations/q6.png",
     text: "6. 시험이 이틀 남았다! 나의 공부법은?",
     options: [
       {
@@ -138,6 +144,7 @@ const questions = [
   },
   {
     id: 7,
+    illustration: "q-illustrations/q7.png",
     text: "7. 스터디 모임에서 의견 충돌이 났을 때 운영진인 나는:",
     options: [
       {
@@ -160,6 +167,7 @@ const questions = [
   },
   {
     id: 8,
+    illustration: "q-illustrations/q8.png",
     text: "8. 다 같이 점심 먹으러 가는 상황. 메뉴 정할 때 내 모습은?",
     options: [
       {
@@ -182,6 +190,7 @@ const questions = [
   },
   {
     id: 9,
+    illustration: "q-illustrations/q9.png",
     text: "9. 친구 생일 선물을 고를 때:",
     options: [
       {
@@ -204,6 +213,7 @@ const questions = [
   },
   {
     id: 10,
+    illustration: "q-illustrations/q10.png",
     text: "10. 친구 혹은 연인과 영화관에 갔을 때:",
     options: [
       {
@@ -226,6 +236,7 @@ const questions = [
   },
   {
     id: 11,
+    illustration: "q-illustrations/q11.png",
     text: "11. 저주 받은 몸뚱아리. 안되겠다, 운동을 시작하기로 마음을 먹은 나:",
     options: [
       {
@@ -248,6 +259,7 @@ const questions = [
   },
   {
     id: 12,
+    illustration: "q-illustrations/q12.png",
     text: "12. 상사가 한 번도 안 해본 어려운 업무를 맡겼다. 나는:",
     options: [
       {
@@ -270,6 +282,7 @@ const questions = [
   },
   {
     id: 13,
+    illustration: "q-illustrations/q13.png",
     text: "13. 완벽했던 데이트 계획이 틀어지기 시작한다. 나는:",
     options: [
       {
@@ -292,6 +305,7 @@ const questions = [
   },
   {
     id: 14,
+    illustration: "q-illustrations/q14.png",
     text: "14. 내 전문 분야에 대해 친구가 틀린 주장을 우길 때:",
     options: [
       {
@@ -314,6 +328,7 @@ const questions = [
   },
   {
     id: 15,
+    illustration: "q-illustrations/q15.png",
     text: "15. 영화를 보는데 생소한 과학 개념이 등장했다. 나는:",
     options: [
       {
@@ -336,6 +351,7 @@ const questions = [
   },
   {
     id: 16,
+    illustration: "q-illustrations/q16.png",
     text: "16. 검지로 벽을 누르면 변비가 해결된다는 정보를 봤다. 나는:",
     options: [
       {
@@ -358,6 +374,7 @@ const questions = [
   },
   {
     id: 17,
+    illustration: "q-illustrations/q17.png",
     text: "17. 뉴스에 유니콘이 발견됐다는 보도가 나왔다! 동물학자인 나는:",
     options: [
       {
@@ -380,6 +397,7 @@ const questions = [
   },
   {
     id: 18,
+    illustration: "q-illustrations/q18.png",
     text: "18. 신데렐라를 찾으려는 왕자에게 조언한다면?",
     options: [
       {
@@ -402,6 +420,7 @@ const questions = [
   },
   {
     id: 19,
+    illustration: "q-illustrations/q19.png",
     text: "19. 초능력이 생겨 히어로 회사에 취업했는데 행정 업무만 한다면?",
     options: [
       {
@@ -424,6 +443,7 @@ const questions = [
   },
   {
     id: 20,
+    illustration: "q-illustrations/q20.png",
     text: "20. 소설 속 캐릭터로 빙의했다! 3년 뒤 죽을 운명이라면?",
     options: [
       {
@@ -661,7 +681,7 @@ function renderQuestion() {
   // hide 이전 on first question
   btnPrev.style.visibility = currentQ === 0 ? "hidden" : "visible";
 
-  // 다음 only avtive if this question has been answered before OR an option is selected
+  // 다음 only active if this question has been answered before OR an option is selected
   btnNext.disabled = answers[currentQ] === undefined;
 }
 
