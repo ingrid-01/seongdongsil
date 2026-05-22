@@ -206,8 +206,8 @@
 }
 
 #question-illustration .question-illustration-img {
-  width: 180px;
-  height: 180px;
+  width: 350px;
+  height: 300px;
   object-fit: contain;
   display: inline-block;
 }
