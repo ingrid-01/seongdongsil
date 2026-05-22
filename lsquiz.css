@@ -206,8 +206,8 @@
 }
 
 #question-illustration .question-illustration-img {
-  width: 350px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   object-fit: contain;
   display: inline-block;
 }
@@ -221,11 +221,6 @@
   text-align: center;
 }
 
-.logo img {
-  width: 150px;
-  height: auto;
-}
-
 /* Options stay left-aligned for readability */
 .option-btn {
   text-align: left;
@@ -234,8 +229,8 @@
 /* Responsive */
 @media (max-width: 480px) {
   #question-illustration.question-illustration-img {
-    width: 130px;
-    height: 130px;
+    width: 220px;
+    height: 220px;
   }
 }
 
