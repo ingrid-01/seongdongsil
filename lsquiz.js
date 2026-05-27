@@ -638,7 +638,7 @@ function showScreen(id) {
 const validateAnswers = (answers) => {
   try {
     if (answers.length < 20) {
-      throw new Error("No answers provided");
+      throw new Error("퀴즈를 완료해주세요.");
     }
     return true;
   } catch (error) {
@@ -694,7 +694,7 @@ function renderQuestion() {
 
   // restore pending answer highlight if they selected but didn't confirm
   if (pendingAnswer !== null) {
-    // pendingAnswer doesn't apply when nagvigating back, so clear it
+    // pendingAnswer doesn't apply when navigating back, so clear it
     pendingAnswer = null;
   }
 
@@ -870,6 +870,12 @@ function renderIllustration(topStyles) {
 
 // -- CALCULATE + SHOW RESULT --
 function showResult() {
+  const result = validateAnswers(answers);
+  if (!result) {
+    alert("퀴즈를 풀어주세요!");
+    return;
+  }
+
   const maxScore = Math.max(scores.A, scores.R, scores.T, scores.P);
 
   const topStyles = Object.keys(scores).filter(function (s) {
