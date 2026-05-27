@@ -634,6 +634,19 @@ function showScreen(id) {
   document.getElementById(id).classList.add("active");
 }
 
+// -- ANSWER VALIDATION --
+const validateAnswers = (answers) => {
+  try {
+    if (answers.length < 20) {
+      throw new Error("No answers provided");
+    }
+    return true;
+  } catch (error) {
+    console.error("Error validating answers:", error.message);
+    return null;
+  }
+}
+
 // -- RENDER QUESTION --
 function renderQuestion() {
   const q = questions[currentQ];
