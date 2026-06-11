@@ -643,9 +643,9 @@ const validateAnswers = (answers) => {
     return true;
   } catch (error) {
     console.error("Error validating answers:", error.message);
-    return null;
+    return error.message;
   }
-}
+};
 
 // -- RENDER QUESTION --
 function renderQuestion() {
