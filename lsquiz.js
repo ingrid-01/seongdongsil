@@ -642,7 +642,6 @@ const validateAnswers = (answers) => {
     }
     return true;
   } catch (error) {
-    console.error("Error validating answers:", error.message);
     return error.message;
   }
 };
@@ -871,8 +870,8 @@ function renderIllustration(topStyles) {
 // -- CALCULATE + SHOW RESULT --
 function showResult() {
   const result = validateAnswers(answers);
-  if (!result) {
-    alert("퀴즈를 풀어주세요!");
+  if (typeof result === "string") {
+    alert(result);
     return;
   }
 
