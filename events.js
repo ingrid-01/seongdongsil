@@ -1,7 +1,10 @@
-
 //0. Import
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -10,8 +13,11 @@ const firebaseConfig = {
   projectId: "seongdongsil",
   storageBucket: "seongdongsil.firebasestorage.app",
   messagingSenderId: "963949162969",
-  appId: "1:963949162969:web:3f6f82e515c9b732c569c8"
+  appId: "1:963949162969:web:3f6f82e515c9b732c569c8",
 };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // 1. Nickname System
 let nickname = localStorage.getItem("nickname");
