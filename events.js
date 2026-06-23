@@ -1,3 +1,18 @@
+
+//0. Import
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBANmFw3tRkFzvU2Fic_x3xZSocMxhhGV0",
+  authDomain: "seongdongsil.firebaseapp.com",
+  projectId: "seongdongsil",
+  storageBucket: "seongdongsil.firebasestorage.app",
+  messagingSenderId: "963949162969",
+  appId: "1:963949162969:web:3f6f82e515c9b732c569c8"
+};
+
 // 1. Nickname System
 let nickname = localStorage.getItem("nickname");
 
