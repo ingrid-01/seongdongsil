@@ -442,7 +442,7 @@ addLinkBtn.addEventListener("click", () => {
   linkInput.value = "";
 });
 
-eventForm.addEventListener("submit", (e) => {
+eventForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const dateObj = new Date(document.getElementById("event-date").value);
@@ -486,10 +486,8 @@ eventForm.addEventListener("submit", (e) => {
       description: document.getElementById("event-description").value.trim(),
       links: [...tempLinks],
     };
-    events.push(newEvent);
+    await addDoc(collection(db, "events"), newEvent);
   }
-
-  saveEvents();
   displayEvents();
   modalOverlay.classList.add("hidden");
   eventForm.reset();
