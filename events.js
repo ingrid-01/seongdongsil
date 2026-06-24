@@ -68,14 +68,21 @@ const saveEvents = () => {
   localStorage.setItem("events", JSON.stringify(events));
 };
 
-const loadEvents = () => {
-  const saved = localStorage.getItem("events");
-  if (saved) {
-    const loaded = JSON.parse(saved);
+async function loadEvents() {
+  try {
+    const snapshot = await getDocs(collection(db, "events"));
+    const data = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    console.log("Got here! Data is:", data);  
     events.length = 0;
-    loaded.forEach((e) => events.push(e));
+    data.forEach((e) => events.push(e));
+    displayEvents();
+    } catch (error) {
+       console.log("Caught an error:", error.message);
+    }
   }
-};
 
 // Get unique months from events for dropdownn
 const populateMonthFilter = () => {
