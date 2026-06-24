@@ -470,7 +470,6 @@ eventForm.addEventListener("submit", (e) => {
     delete eventForm.dataset.editId;
   } else {
     const newEvent = {
-      id: `event_${Date.now()}`,
       category: document.getElementById("event-category").value,
       subCategory: document.getElementById("event-sub").value || null,
       region: document.getElementById("event-region").value,
