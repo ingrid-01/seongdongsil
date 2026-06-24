@@ -4,6 +4,7 @@ import {
   getFirestore,
   collection,
   getDocs,
+  addDoc,
 } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -71,18 +72,18 @@ const saveEvents = () => {
 async function loadEvents() {
   try {
     const snapshot = await getDocs(collection(db, "events"));
-    const data = snapshot.docs.map(doc => ({
+    const data = snapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data()
+      ...doc.data(),
     }));
-    console.log("Got here! Data is:", data);  
+    console.log("Got here! Data is:", data);
     events.length = 0;
     data.forEach((e) => events.push(e));
     displayEvents();
-    } catch (error) {
-       console.log("Caught an error:", error.message);
-    }
+  } catch (error) {
+    console.log("Caught an error:", error.message);
   }
+}
 
 // Get unique months from events for dropdownn
 const populateMonthFilter = () => {
