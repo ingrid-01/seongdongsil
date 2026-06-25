@@ -468,6 +468,7 @@ eventForm.addEventListener("submit", async (e) => {
         description: document.getElementById("event-description").value.trim(),
         links: [...tempLinks],
       });
+      events[index] = { ...events[index], ...updatedFields };
     }
     delete eventForm.dataset.editId;
   } else {
