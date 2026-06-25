@@ -486,6 +486,7 @@ eventForm.addEventListener("submit", async (e) => {
       description: document.getElementById("event-description").value.trim(),
       links: [...tempLinks],
     };
+    events.push(newEvent);
     await addDoc(collection(db, "events"), newEvent);
   }
   displayEvents();
