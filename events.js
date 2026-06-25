@@ -5,6 +5,8 @@ import {
   collection,
   getDocs,
   addDoc,
+  updateDoc,
+  doc,
 } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -453,20 +455,19 @@ eventForm.addEventListener("submit", async (e) => {
   if (editId) {
     const index = events.findIndex((e) => e.id === editId);
     if (index !== -1) {
-      events[index].category = document.getElementById("event-category").value;
-      events[index].subCategory =
-        document.getElementById("event-sub").value || null;
-      events[index].region = document.getElementById("event-region").value;
-      events[index].title = document.getElementById("event-title").value;
-      events[index].date = document.getElementById("event-date").value;
-      events[index].day = dayOfWeek;
-      events[index].startTime = document.getElementById("event-start").value;
-      events[index].endTime = document.getElementById("event-end").value;
-      events[index].location = document.getElementById("event-location").value;
-      events[index].description = document
-        .getElementById("event-description")
-        .value.trim();
-      events[index].links = [...tempLinks];
+      await updateDoc(doc(db, "events", editId), {
+        category: document.getElementById("event-category").value,
+        subCategory: document.getElementById("event-sub").value || null,
+        region: document.getElementById("event-region").value,
+        title: document.getElementById("event-title").value,
+        date: document.getElementById("event-date").value,
+        day: dayOfWeek,
+        startTime: document.getElementById("event-start").value,
+        endTime: document.getElementById("event-end").value,
+        location: document.getElementById("event-location").value,
+        description: document.getElementById("event-description").value.trim(),
+        links: [...tempLinks],
+      });
     }
     delete eventForm.dataset.editId;
   } else {
