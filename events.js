@@ -306,9 +306,9 @@ const showDetail = (eventId) => {
         subCategoryGroup.classList.remove("hidden");
         document.getElementById("event-sub").value = event.subCategory;
       }
-      tempLinks = [...event.links];
+      tempLinks = [...(event.links || [])];
       linksList.innerHTML = "";
-      event.links.forEach((url) => {
+      (event.links || []).forEach((url) => {
         const li = document.createElement("li");
         li.textContent = url;
         const removeBtn = document.createElement("button");
@@ -476,7 +476,20 @@ eventForm.addEventListener("submit", async (e) => {
         description: document.getElementById("event-description").value.trim(),
         links: [...tempLinks],
       });
-      events[index] = { ...events[index], ...updatedFields };
+      events[index] = {
+        ...events[index],
+        category: document.getElementById("event-category").value,
+        subCategory: document.getElementById("event-sub").value || null,
+        region: document.getElementById("event-region").value,
+        title: document.getElementById("event-title").value,
+        date: document.getElementById("event-date").value,
+        day: dayOfWeek,
+        startTime: document.getElementById("event-start").value,
+        endTime: document.getElementById("event-end").value,
+        location: document.getElementById("event-location").value,
+        description: document.getElementById("event-description").value.trim(),
+        links: [...tempLinks],
+      };
     }
     delete eventForm.dataset.editId;
   } else {
