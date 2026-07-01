@@ -6,6 +6,7 @@ import {
   getDocs,
   addDoc,
   updateDoc,
+  deleteDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
 
@@ -67,9 +68,6 @@ const filterArea = document.getElementById("filter-area");
 const filterAll = document.getElementById("filter-all");
 
 // 4. Save/Load
-const saveEvents = () => {
-  localStorage.setItem("events", JSON.stringify(events));
-};
 
 async function loadEvents() {
   try {
@@ -333,17 +331,18 @@ const showDetail = (eventId) => {
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
     deleteBtn.textContent = "삭제";
-    deleteBtn.addEventListener("click", () => {
+    async function handleDeleteClick() {
       const confirm = window.confirm(`"${event.title}" 을 삭제할까요?`);
       if (confirm) {
         const index = events.indexOf(event);
         events.splice(index, 1);
-        saveEvents();
+        await deleteDoc(doc(db, "events", eventId));
         detailView.classList.add("hidden");
         eventsContainer.classList.remove("hidden");
         displayEvents();
       }
-    });
+    }
+    deleteBtn.addEventListener("click", handleDeleteClick);
     detailActions.appendChild(deleteBtn);
   }
 
