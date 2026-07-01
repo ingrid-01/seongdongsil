@@ -276,15 +276,18 @@ const showDetail = (eventId) => {
   joinBtn.classList.add("join-btn");
   joinBtn.textContent = isAttending ? "참여 취소" : "참여하기";
   joinBtn.classList.add(isAttending ? "attending" : "not-attending");
-  joinBtn.addEventListener("click", () => {
+  async function handleJoinClick() {
     if (isAttending) {
       event.attendees = event.attendees.filter((a) => a !== nickname);
     } else {
       event.attendees.push(nickname);
     }
-    saveEvents();
+    await updateDoc(doc(db, "events", eventId), {
+      attendees: event.attendees,
+    });
     showDetail(eventId);
-  });
+  }
+  joinBtn.addEventListener("click", handleJoinClick);
   detailContent.appendChild(joinBtn);
 
   // Creator buttons
@@ -358,11 +361,14 @@ const showDetail = (eventId) => {
       const deleteComment = document.createElement("button");
       deleteComment.textContent = "x";
       deleteComment.classList.add("comment-delete-btn");
-      deleteComment.addEventListener("click", () => {
+      async function handleDeleteComment() {
         event.comments.splice(index, 1);
-        saveEvents();
+        await updateDoc(doc(db, "events", eventId), {
+          comments: event.comments,
+        });
         showDetail(eventId);
-      });
+      }
+      deleteComment.addEventListener("click", handleDeleteComment);
       commentDiv.appendChild(deleteComment);
     }
     commentsDiv.appendChild(commentDiv);
@@ -375,7 +381,7 @@ const showDetail = (eventId) => {
   const commentSubmit = document.createElement("button");
   commentSubmit.textContent = "게시";
   commentSubmit.classList.add("comment-submit-btn");
-  commentSubmit.addEventListener("click", () => {
+  async function handleCommentSubmit() {
     const text = commentInput.value.trim();
     if (!text) return;
     event.comments.push({
@@ -383,9 +389,13 @@ const showDetail = (eventId) => {
       text: text,
       createdAt: new Date().toISOString(),
     });
-    saveEvents();
+    await updateDoc(doc(db, "events", eventId), {
+      comments: event.comments,
+    });
     showDetail(eventId);
-  });
+  }
+
+  commentSubmit.addEventListener("click", handleCommentSubmit);
 
   commentsDiv.appendChild(commentInput);
   commentsDiv.appendChild(commentSubmit);
