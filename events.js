@@ -202,14 +202,6 @@ const showDetail = (eventId) => {
 
   const isAttending = event.attendees.includes(nickname);
   const isCreator = event.createdBy === nickname;
-  console.log(
-    "isCreator:",
-    isCreator,
-    "createdBy:",
-    event.createdBy,
-    "nickname:",
-    nickname,
-  );
 
   // Switch views
   detailView.classList.remove("hidden");
