@@ -20,7 +20,7 @@ let data = loadData();
 
 const LANG = {
   en: {
-    title: "MANDALART",
+    title: "MANDALART PLANNER",
     subtitle: "personal goal map",
     hint: "Fill in your core goal and 8 sub-goals directly · tap an outer block to zoom in and add actions",
     core_ph: "core goal",
@@ -36,7 +36,7 @@ const LANG = {
       "Account-based library & sharing with other SDS members are planned for a later phase, once login is built.",
   },
   kr: {
-    title: "만다라트",
+    title: "만다라트 계획표",
     subtitle: "나만의 목표 지도",
     hint: "핵심 목표와 8개의 세부 목표를 바로 입력하세요 · 바깥 블록을 탭하면 확대되어 실천 항목을 추가할 수 있어요",
     core_ph: "핵심 목표",
