@@ -29,24 +29,59 @@
     </nav>
 
     <!-- MAIN -->
+    <!-- MAIN -->
     <main class="mandalart-main">
-      <header class="mandalart=header">
-        <h1 class="mandalart-title">만다라트 계획표 만들기</h1>
-        <p class="mandalart-aubtitle">
-          핵심 목표를 가운데에 적고, 네 가지의 키워드로 구체화 시켜보세요.
-        </p>
-      </header>
+      <div class="page">
+        <div class="topbar">
+          <div class="lang-toggle">
+            <button id="btn-en" class="active">EN</button>
+            <button id="btn-kr">KR</button>
+          </div>
+        </div>
 
-      <!-- The 7x7 grid lives here - JS builds it dynamically -->
-      <div class="grid-wrapper">
-        <div id="mandalart-grid" class="mandalart-grid"></div>
-      </div>
+        <div class="title-wrap">
+          <svg
+            class="rule"
+            id="rule-top"
+            width="220"
+            height="6"
+            viewBox="0 0 220 6"
+          ></svg>
+          <div class="title-line">
+            <div class="title" id="main-title">MANDALART</div>
+          </div>
+          <svg
+            class="rule"
+            id="rule-bottom"
+            width="220"
+            height="6"
+            viewBox="0 0 220 6"
+          ></svg>
+          <div class="subtitle" id="subtitle">personal goal map</div>
+        </div>
 
-      <!-- Action buttons below the grid -->
-      <div class="grid-actions">
-        <button id="btn-reset" class="action-btn secondary">초기화</button>
+        <div class="hint" id="hint-text">
+          Fill in your core goal and 8 sub-goals directly · tap an outer block
+          to zoom in and add actions
+        </div>
+
+        <div class="super-grid" id="superGrid"></div>
+
+        <div class="actions">
+          <button class="btn" id="btn-reset">Reset</button>
+          <button class="btn primary" id="btn-save">Save as PNG</button>
+        </div>
+        <div class="note" id="note-text">
+          Saved automatically to your browser as you type. Account-based library
+          & sharing with other SDS members are planned for a later phase, once
+          login is built.
+        </div>
       </div>
     </main>
+
+    <div class="backdrop" id="backdrop"></div>
+    <div class="zoom-panel" id="zoomPanel"></div>
+    <div class="toast" id="toast"></div>
 
     <!-- FOOTER -->
     <footer class="site-footer">

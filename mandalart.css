@@ -1,0 +1,331 @@
+:root {
+  --paper: #fbf5e6;
+  --ink: #5b4030;
+  --ink-soft: #9c8168;
+  --lemon: #f6d34c;
+  --core-gold: #efc230;
+  --cream-cell: #fffdf6;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Nunito", "Gowun Dodum", sans-serif;
+  overflow-x: hidden;
+}
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 16px 80px;
+  position: relative;
+}
+
+/* ---------- Header ---------- */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+.lang-toggle {
+  display: flex;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+}
+.lang-toggle button {
+  background: var(--paper);
+  border: none;
+  padding: 5px 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.lang-toggle button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.title-wrap {
+  text-align: center;
+  margin: 6px 0 30px;
+}
+.rule {
+  display: block;
+  margin: 0 auto;
+}
+.title-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 14px;
+}
+.title {
+  font-family: "Kalam", "Gaegu", cursive;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: 2px;
+  padding-right: 2px;
+}
+.title.kr {
+  font-family: "Gaegu", cursive;
+  letter-spacing: 1px;
+  padding-right: 1px;
+}
+.subtitle {
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+
+/* ---------- Super grid ---------- */
+.super-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (min-width: 520px) {
+  .super-grid {
+    gap: 20px;
+  }
+}
+
+.block {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  transition:
+    transform 0.18s ease,
+    opacity 0.3s ease,
+    filter 0.3s ease;
+}
+.block.zoomable {
+  cursor: pointer;
+}
+.block.zoomable:hover {
+  transform: translateY(-2px) rotate(-0.3deg);
+}
+.block.center-block:hover {
+  transform: translateY(-2px) rotate(0.3deg);
+}
+
+.block svg.grid-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.cell-layer {
+  position: absolute;
+  inset: 0;
+}
+.cell {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cell-input {
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-align: center;
+  font: inherit;
+  color: var(--ink);
+  padding: 2px 3px;
+  font-size: 9px;
+  line-height: 1.25;
+  outline: none;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+.cell-input:empty:before {
+  content: attr(data-placeholder);
+  color: rgba(156, 129, 104, 0.4);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.cell.center-cell .cell-input {
+  background: var(--lemon);
+  border-radius: 3px;
+  font-family: "Kalam", "Gaegu", cursive;
+  font-weight: 700;
+  font-size: 10.5px;
+  padding: 6px 3px;
+  width: 84%;
+  margin: 0 auto;
+}
+.cell.core-cell .cell-input {
+  background: var(--core-gold);
+  border-radius: 4px;
+  font-family: "Kalam", "Gaegu", cursive;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 6px 3px;
+  width: 84%;
+  margin: 0 auto;
+}
+.linked-label {
+  width: 84%;
+  max-height: 100%;
+  overflow: hidden;
+  background: var(--lemon);
+  border-radius: 3px;
+  padding: 6px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Kalam", "Gaegu", cursive;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.25;
+  color: var(--ink);
+  word-break: break-word;
+}
+.linked-label.empty {
+  color: rgba(91, 64, 48, 0.4);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.super-grid.dimmed .block:not(.active) {
+  opacity: 0.18;
+  filter: blur(1px) grayscale(30%);
+  pointer-events: none;
+}
+
+/* ---------- Zoom overlay ---------- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(91, 64, 48, 0.28);
+  z-index: 40;
+  display: none;
+}
+.backdrop.show {
+  display: block;
+}
+
+.zoom-panel {
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: min(88vw, 420px);
+  aspect-ratio: 1/1;
+  background: var(--cream-cell);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(91, 64, 48, 0.35);
+  padding: 9px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1),
+    opacity 0.22s ease;
+}
+.zoom-panel.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: all;
+}
+.zoom-panel .cell-input {
+  font-size: 15px;
+  padding: 6px 6px;
+}
+.zoom-panel .cell-layer {
+  inset: 9px;
+}
+.zoom-panel .cell.center-cell .cell-input {
+  font-size: 18px;
+  padding: 10px 6px;
+}
+.zoom-panel .cell.core-cell .cell-input {
+  font-size: 21px;
+  padding: 10px 6px;
+}
+.zoom-panel .linked-label {
+  font-size: 17px;
+  padding: 10px 6px;
+}
+
+/* ---------- Footer actions ---------- */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+.btn {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1.6px solid var(--ink);
+  background: var(--cream-cell);
+  color: var(--ink);
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--lemon);
+}
+.btn.danger-armed {
+  background: #c1694f;
+  color: var(--cream-cell);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.note {
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: -14px 0 20px;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  z-index: 60;
+  max-width: 80vw;
+  text-align: center;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
